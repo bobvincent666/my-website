@@ -1,0 +1,150 @@
+.page {
+  padding: 1.5rem 0 4rem;
+  background: linear-gradient(180deg, #fbfcfe, #f6f8fc 42%, #ffffff);
+}
+
+.breadcrumb {
+  margin-bottom: 1.2rem;
+  color: #94a3b8;
+  font-size: 1rem;
+}
+
+.hero {
+  overflow: hidden;
+  border-radius: 1.25rem;
+  margin-bottom: 1.75rem;
+  color: #fff;
+}
+
+.heroBlue {
+  background:
+    linear-gradient(180deg, rgba(10, 15, 35, 0.28), rgba(10, 15, 35, 0.62)),
+    url('/img/docusaurus-social-card.jpg') center/cover no-repeat;
+}
+
+.heroViolet {
+  background:
+    linear-gradient(180deg, rgba(22, 16, 44, 0.22), rgba(22, 16, 44, 0.7)),
+    linear-gradient(135deg, #1e1b4b, #4c1d95 55%, #7c3aed);
+}
+
+.heroOrange {
+  background:
+    linear-gradient(180deg, rgba(51, 24, 14, 0.18), rgba(51, 24, 14, 0.62)),
+    linear-gradient(135deg, #7c2d12, #ea580c 55%, #fdba74);
+}
+
+.heroInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 20rem;
+  padding: 2rem 1.4rem 1.6rem;
+}
+
+.heroDateBlock {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: fit-content;
+  margin-bottom: 4.5rem;
+  padding-left: 1rem;
+  border-left: 4px solid #4f78ff;
+}
+
+.heroDateBlock span {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.heroDateBlock strong {
+  font-size: 1.35rem;
+}
+
+.heroTitle {
+  margin: 0 0 0.55rem;
+  font-size: 2rem;
+  line-height: 1.35;
+}
+
+.heroDesc {
+  max-width: 62rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.article {
+  padding: 1.25rem 1.3rem 2rem;
+  border: 1px solid #ebeff5;
+  border-radius: 1.25rem;
+  background: #fff;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.04);
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.category {
+  display: inline-flex;
+  padding: 0.38rem 0.7rem;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.metaDate {
+  margin-left: auto;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.content {
+  color: #334155;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.content :global(h2) {
+  margin-top: 2rem;
+}
+
+.content :global(pre) {
+  border-radius: 1rem;
+}
+
+@media screen and (max-width: 996px) {
+  .heroInner {
+    min-height: 16rem;
+  }
+
+  .heroDateBlock {
+    margin-bottom: 2.5rem;
+  }
+
+  .heroTitle {
+    font-size: 1.55rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .page {
+    padding-top: 1rem;
+  }
+
+  .article {
+    padding: 1rem;
+  }
+
+  .metaDate {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,170 @@
+.page {
+  padding: 0.5rem 0 1.5rem;
+}
+
+.hero {
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(16, 24, 40, 0.18), rgba(16, 24, 40, 0.5)),
+    url('/img/docusaurus-social-card.jpg') center/cover no-repeat;
+}
+
+.heroOverlay {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 9rem;
+  padding: 1.3rem 1.4rem;
+  color: #fff;
+}
+
+.heroKicker {
+  margin: 0 0 0.35rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.heroTitle {
+  margin: 0 0 0.3rem;
+  font-size: 1.25rem;
+}
+
+.heroDesc {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+}
+
+.heroAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff5fa8, #ff7f93);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.list {
+  display: grid;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 4.2rem minmax(0, 1fr) 6rem;
+  gap: 1rem;
+  align-items: start;
+  padding: 1.35rem 0.7rem;
+  border-bottom: 1px solid #eef1f6;
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+.date {
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+  border: 1px solid #ffd2df;
+  border-radius: 0.9rem;
+  background: linear-gradient(180deg, #fff 0%, #fff 28%, #ff5f8f 28%, #ff7c9e 100%);
+  box-shadow: 0 8px 24px rgba(255, 95, 143, 0.12);
+}
+
+.month {
+  width: 100%;
+  padding: 0.35rem 0;
+  color: #7c8798;
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.day {
+  width: 100%;
+  padding: 0.38rem 0 0.48rem;
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  text-align: center;
+}
+
+.main {
+  min-width: 0;
+}
+
+.title {
+  margin: 0 0 0.45rem;
+  font-size: 1.35rem;
+  line-height: 1.45;
+}
+
+.meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  color: #9aa5b5;
+  font-size: 0.83rem;
+}
+
+.excerpt {
+  margin: 0;
+  color: #66758a;
+  font-size: 0.94rem;
+  line-height: 1.8;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.85rem;
+  margin-top: 0.85rem;
+  color: #c2c9d5;
+  font-size: 0.85rem;
+}
+
+.thumb {
+  align-self: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.5rem;
+  background:
+    linear-gradient(180deg, rgba(17, 24, 39, 0.25), rgba(17, 24, 39, 0.05)),
+    url('/img/docusaurus.png') center/cover no-repeat,
+    linear-gradient(135deg, #111827, #334155);
+}
+
+@media screen and (max-width: 996px) {
+  .item {
+    grid-template-columns: 4.2rem minmax(0, 1fr);
+  }
+
+  .thumb {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .heroOverlay {
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 10rem;
+  }
+
+  .item {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .date {
+    width: 4.2rem;
+  }
+}
