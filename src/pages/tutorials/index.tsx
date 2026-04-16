@@ -25,6 +25,15 @@ const featuredItem: TutorialItem = {
 
 const tutorialItems: TutorialItem[] = [
   {
+    title: 'Claude Code：一个开源的 AI 代码助手，助你轻松驾驭编程挑战',
+    description:
+      'Claude Code 能自动从数十个来源抓取内容，用 AI 生成高质量、结构清晰的摘要，按 4 小时 / 每日 / 每周 / 每月四种频率推送给你。',
+    categories: ['开源项目'],
+    date: '2026年02月27日',
+    link: '/tutorials/claudecode',
+    tone: 'orange',
+  },
+  {
     title: '信息过载终结者！2026 开源AI新闻摘要神器 ClawFeed',
     description:
       'ClawFeed 能自动从数十个来源抓取内容，用 AI 生成高质量、结构清晰的摘要，按 4 小时 / 每日 / 每周 / 每月四种频率推送给你。',

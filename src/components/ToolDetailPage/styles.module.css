@@ -1,0 +1,109 @@
+.page {
+  padding: 1rem 0 4rem;
+  background: #fff;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.8rem;
+  color: #ff5e97;
+  font-size: 1rem;
+}
+
+.breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.headerRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.title {
+  margin: 0;
+  color: #2f343b;
+  font-size: 2.3rem;
+  line-height: 1.2;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.reportButton {
+  padding: 0.75rem 0.95rem;
+  border: 0;
+  background: transparent;
+  color: #a1a1aa;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.visitButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.4rem;
+  border-radius: 0.95rem;
+  background: linear-gradient(135deg, #ff6aa6, #f0548a);
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.article {
+  color: #31343b;
+}
+
+.description {
+  margin: 0 0 2rem;
+  font-size: 1.15rem;
+  line-height: 1.9;
+}
+
+.sectionTitle {
+  margin: 0 0 1.4rem;
+  font-size: 2rem;
+  line-height: 1.3;
+}
+
+.list {
+  margin: 0;
+  padding-left: 1.6rem;
+  color: #3f3f46;
+  font-size: 1.08rem;
+  line-height: 1.95;
+}
+
+.list li + li {
+  margin-top: 0.6rem;
+}
+
+@media screen and (max-width: 640px) {
+  .headerRow {
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 1.9rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .description,
+  .list {
+    font-size: 1rem;
+  }
+}

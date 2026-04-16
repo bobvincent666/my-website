@@ -28,7 +28,7 @@ const aiNewsItems: ContentCard[] = [
     category: '全网AI快讯',
     source: '站点编辑部',
     date: '今天',
-    link: '/news/intro',
+    link: '/news',
     accent: 'dark',
   },
   {
@@ -37,7 +37,7 @@ const aiNewsItems: ContentCard[] = [
     category: '全网AI快讯',
     source: '行业观察',
     date: '2 小时前',
-    link: '/news/intro',
+    link: '/news',
     accent: 'orange',
   },
   {
@@ -46,7 +46,7 @@ const aiNewsItems: ContentCard[] = [
     category: '全网AI快讯',
     source: '趋势追踪',
     date: '今天',
-    link: '/news/intro',
+    link: '/news',
     accent: 'blue',
   },
   {
@@ -55,7 +55,7 @@ const aiNewsItems: ContentCard[] = [
     category: '全网AI快讯',
     source: '开源雷达',
     date: '本周',
-    link: '/news/intro',
+    link: '/news',
     accent: 'violet',
   },
 ];
@@ -193,7 +193,7 @@ export default function HomepageFeatures(): ReactNode {
   return (
     <div className={styles.pageShell}>
       <div className="container">
-        <ContentSection title="全网AI快讯" moreTo="/news/intro" items={aiNewsItems} />
+        <ContentSection title="全网AI快讯" moreTo="/news" items={aiNewsItems} />
         <ContentSection title="技术教程" moreTo="/tutorials" items={tutorialItems} />
         <ToolsSection />
       </div>

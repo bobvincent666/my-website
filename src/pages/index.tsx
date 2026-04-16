@@ -21,10 +21,10 @@ function HomepageHeader() {
           </Heading>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
           <div className={styles.buttons}>
-            <Link className="button button--secondary button--lg" to="/news/intro">
+            <Link className="button button--secondary button--lg" to="/news">
               查看全网AI快讯
             </Link>
-            <Link className="button button--outline button--secondary button--lg" to="/tutorials">
+            <Link className="button button--secondary button--lg" to="/tutorials">
               浏览技术教程
             </Link>
           </div>

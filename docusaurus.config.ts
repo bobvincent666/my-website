@@ -67,7 +67,7 @@ const config: Config = {
       },
       items: [
         {to: '/', label: '首页', position: 'left'},
-        {to: '/news/intro', label: '全网AI快讯', position: 'left'},
+        {to: '/news', label: '全网AI快讯', position: 'left'},
         {to: '/tutorials', label: '技术教程', position: 'left'},
         {to: '/tools', label: 'AI工具集', position: 'left'},
         {to: '/about', label: '关于我们', position: 'left'},
@@ -81,7 +81,7 @@ const config: Config = {
           items: [
             {
               label: '全网AI快讯',
-              to: '/news/intro',
+              to: '/news',
             },
             {
               label: '技术教程',
