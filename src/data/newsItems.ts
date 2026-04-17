@@ -17,21 +17,21 @@ function buildDetailHref(id: string) {
 }
 
 export const newsItems: NewsItem[] = [
-  {
-    id: 'claude-code',
-    title: 'MKEAI 中转站新增 GPT-OSS-120B 模型，OpenAI 首款开源大模型正式上线',
-    excerpt:
-      'MKEAI 补齐了开源推理能力版图，入门门槛更低，这次更新对大模型试用、聚合调度和接口兼容性都有帮助。',
-    source: 'StepOne',
-    time: '13:17',
-    month: '8月',
-    day: '06',
-    categories: ['全网AI快讯', '开源模型'],
-    detail: [
-      '这条新闻对应的详情页会直接渲染本地 Markdown 文件，适合承载更完整的长文解读、使用说明或外部整理资料。',
-    ],
-    href: '/news/claude-code',
-  },
+  // {
+  //   id: 'claude-code',
+  //   title: 'MKEAI 中转站新增 GPT-OSS-120B 模型，OpenAI 首款开源大模型正式上线',
+  //   excerpt:
+  //     'MKEAI 补齐了开源推理能力版图，入门门槛更低，这次更新对大模型试用、聚合调度和接口兼容性都有帮助。',
+  //   source: 'StepOne',
+  //   time: '13:17',
+  //   month: '8月',
+  //   day: '06',
+  //   categories: ['全网AI快讯', '开源模型'],
+  //   detail: [
+  //     '这条新闻对应的详情页会直接渲染本地 Markdown 文件，适合承载更完整的长文解读、使用说明或外部整理资料。',
+  //   ],
+  //   href: '/news/claude-code',
+  // },
   {
     id: 'trae-claude-37',
     title: 'Trae 已支持 Claude 3.7 Sonnet 模型，这个免费 AI 编程工具更强了',

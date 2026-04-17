@@ -19,7 +19,7 @@ const featuredItem: TutorialItem = {
     '在 AI 席卷职场的今天，一个赛博朋克风格的匿名吐槽社区正在悄然走红。我们从产品设计、社区文化和独立开发的角度拆解这个现象。',
   categories: ['最新文章'],
   date: '2026年03月27日',
-  link: '/tutorials/claude-code',
+  link: '/tutorials/claudecode',
   tone: 'violet',
 };
 

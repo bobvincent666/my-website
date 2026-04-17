@@ -3,7 +3,7 @@ import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
-type TutorialArticlePageProps = {
+type NewsDetailPageProps = {
   title: string;
   description: string;
   date: string;
@@ -12,16 +12,16 @@ type TutorialArticlePageProps = {
   children: ReactNode;
 };
 
-export default function TutorialArticlePage({
+export default function NewsDetailPage({
   title,
   description,
   date,
   categories,
   heroTone = 'blue',
   children,
-}: TutorialArticlePageProps): ReactNode {
+}: NewsDetailPageProps): ReactNode {
   return (
-    // <Layout title={title} description={description}>
+    <Layout title={title} description={description}>
       <div className={styles.page}>
         <div className="container">
           <div className={styles.breadcrumb}>首页 / 全部文章</div>
@@ -54,7 +54,7 @@ export default function TutorialArticlePage({
           </article>
         </div>
       </div>
-    // </Layout>
+   </Layout>
   );
 }
 

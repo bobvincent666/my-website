@@ -2,11 +2,12 @@ import type {ReactNode} from 'react';
 import Link from '@docusaurus/Link';
 import {useLocation} from '@docusaurus/router';
 import TutorialArticlePage from '@site/src/components/TutorialArticlePage';
+import NewsDetailPageComponent from '@site/src/components/NewsDetailPage';
 import {getNewsItemById} from '@site/src/data/newsItems';
 
 function NewsDetailFallback(): ReactNode {
   return (
-    <TutorialArticlePage
+    <NewsDetailPageComponent
       title="未找到新闻详情"
       description="当前新闻参数不存在或已失效。"
       date="请返回列表页重试"
@@ -17,7 +18,7 @@ function NewsDetailFallback(): ReactNode {
       <p>
         <Link to="/news">返回全网AI快讯</Link>
       </p>
-    </TutorialArticlePage>
+    </NewsDetailPageComponent>
   );
 }
 
@@ -31,7 +32,7 @@ export default function NewsDetailPage(): ReactNode {
   }
 
   return (
-    <TutorialArticlePage
+    <NewsDetailPageComponent
       title={item.title}
       description={item.excerpt}
       date={`${item.month}${item.day}日 ${item.time}`}
@@ -46,6 +47,6 @@ export default function NewsDetailPage(): ReactNode {
       <p>
         <Link to="/news">返回全网AI快讯</Link>
       </p>
-    </TutorialArticlePage>
+    </NewsDetailPageComponent>
   );
 }
