@@ -23,7 +23,7 @@ export default function NewsFeedPage(): ReactNode {
               </Heading>
               <p className={styles.heroDesc}>2025 全球人工智能最新动态与趋势解读</p>
             </div>
-            <span className={styles.heroAction}>我要爆料</span>
+            {/* <span className={styles.heroAction}>我要爆料</span> */}
           </div>
         </div>
 

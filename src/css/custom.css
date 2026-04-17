@@ -28,3 +28,47 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Hide the placeholder title so brand row starts at the same top line as other column titles. */
+.footer-col-brand .footer__title {
+  display: none;
+}
+
+.footer-col-brand .footer__items {
+  margin-top: 0;
+}
+
+.footer-brand:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-brand__name {
+  font-weight: 600;
+}
+
+.footer-brand__logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.footer-qrcode {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-qrcode__image {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+}

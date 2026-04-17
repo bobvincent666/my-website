@@ -10,6 +10,7 @@ type TutorialItem = {
   categories: string[];
   date: string;
   link: string;
+  image: string;
   tone: 'violet' | 'blue' | 'orange';
 };
 
@@ -20,6 +21,7 @@ const featuredItem: TutorialItem = {
   categories: ['最新文章'],
   date: '2026年03月27日',
   link: '/tutorials/claudecode',
+  image: '/img/tutotials_header_compressed.png',
   tone: 'violet',
 };
 
@@ -31,7 +33,18 @@ const tutorialItems: TutorialItem[] = [
     categories: ['开源项目'],
     date: '2026年02月27日',
     link: '/tutorials/claudecode',
+    image: '/img/news4.png',
     tone: 'orange',
+  },
+  {
+    title: '从 0 到 1 搭建 AI 知识库：文档整理、检索、问答与迭代优化',
+    description:
+      '适合中小团队的知识库实践指南，从切片、向量化到提示词设计，用一条路线把 RAG 跑通。',
+    categories: ['AI 工作流', '知识库'],
+    date: '2025年12月12日',
+    link: '/tutorials/knowledge-base',
+    image: '/img/news2.png',
+    tone: 'violet',
   },
   {
     title: '信息过载终结者！2026 开源AI新闻摘要神器 ClawFeed',
@@ -40,6 +53,7 @@ const tutorialItems: TutorialItem[] = [
     categories: ['开源项目'],
     date: '2026年02月27日',
     link: '/tutorials/clawfeed',
+    image: '/img/tutorials6.png',
     tone: 'orange',
   },
   {
@@ -49,17 +63,10 @@ const tutorialItems: TutorialItem[] = [
     categories: ['开源项目', '编程工具'],
     date: '2026年01月23日',
     link: '/tutorials/monkeycode',
+    image: '/img/tutorials7.png',
     tone: 'blue',
   },
-  {
-    title: '从 0 到 1 搭建 AI 知识库：文档整理、检索、问答与迭代优化',
-    description:
-      '适合中小团队的知识库实践指南，从切片、向量化到提示词设计，用一条路线把 RAG 跑通。',
-    categories: ['AI 工作流', '知识库'],
-    date: '2025年12月12日',
-    link: '/tutorials/knowledge-base',
-    tone: 'violet',
-  },
+
 ];
 
 export default function TutorialsPage(): ReactNode {
@@ -69,11 +76,22 @@ export default function TutorialsPage(): ReactNode {
         <div className="container">
           <div className={styles.breadcrumb}>首页 / 全部文章</div>
 
-          <Link className={`${styles.featured} ${styles[`tone${capitalize(featuredItem.tone)}`]}`} to={featuredItem.link}>
+          <Link className={`${styles.featured} ${styles[`tone${capitalize(featuredItem.tone)}`]}`} to={featuredItem.link}
+            style={{
+              backgroundImage: `linear-gradient(
+                  180deg,
+                  rgba(8, 12, 24, 0.2),
+                  rgba(8, 12, 24, 0.6)
+                ), url('${featuredItem.image}')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          >
             <div className={styles.featuredInner}>
               <div className={styles.featuredDate}>
                 <span>{featuredItem.date}</span>
-                <strong>最新文章</strong>
+                <strong>最新文章1</strong>
               </div>
               <div className={styles.featuredText}>
                 <Heading as="h1" className={styles.featuredTitle}>
@@ -87,7 +105,12 @@ export default function TutorialsPage(): ReactNode {
           <div className={styles.list}>
             {tutorialItems.map((item) => (
               <Link key={item.title} className={styles.listItem} to={item.link}>
-                <div className={`${styles.thumb} ${styles[`tone${capitalize(item.tone)}`]}`} />
+                <div
+                  className={`${styles.thumb} ${styles[`tone${capitalize(item.tone)}`]}`}
+                  style={{
+                    backgroundImage: `linear-gradient(180deg, rgba(8, 12, 24, 0.1), rgba(8, 12, 24, 0.28)), url('${item.image}')`,
+                  }}
+                />
                 <div className={styles.itemBody}>
                   <Heading as="h2" className={styles.itemTitle}>
                     {item.title}

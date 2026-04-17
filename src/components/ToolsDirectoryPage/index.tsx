@@ -1,4 +1,4 @@
-import type {ReactNode} from 'react';
+import {useEffect, useState, type ReactNode} from 'react';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import {getToolsByCategory, toolCategories} from '@site/src/data/toolItems';
@@ -9,6 +9,22 @@ function toneClassName(tone: string) {
 }
 
 export default function ToolsDirectoryPage(): ReactNode {
+  const [activeCategoryId, setActiveCategoryId] = useState(toolCategories[0]?.id ?? '');
+
+  useEffect(() => {
+    const syncActiveFromHash = () => {
+      const hashId = decodeURIComponent(window.location.hash.replace('#', ''));
+      const matched = toolCategories.find((category) => category.id === hashId);
+      if (matched) {
+        setActiveCategoryId(matched.id);
+      }
+    };
+
+    syncActiveFromHash();
+    window.addEventListener('hashchange', syncActiveFromHash);
+    return () => window.removeEventListener('hashchange', syncActiveFromHash);
+  }, []);
+
   return (
     <div className={styles.page}>
       <div className="container">
@@ -17,14 +33,16 @@ export default function ToolsDirectoryPage(): ReactNode {
             <Heading as="h1" className={styles.sidebarTitle}>
               AI工具集
             </Heading>
-            <p className={styles.sidebarMeta}>共收录 16 个分类，69 个网址</p>
+            <p className={styles.sidebarMeta}>共收录 16 个分类，61 个网址</p>
 
             <nav className={styles.categoryNav} aria-label="AI工具分类">
-              {toolCategories.map((category, index) => (
+              {toolCategories.map((category) => (
                 <a
                   key={category.id}
-                  className={index === 0 ? styles.categoryActive : styles.categoryLink}
+                  className={category.id === activeCategoryId ? styles.categoryActive : styles.categoryLink}
                   href={`#${category.id}`}
+                  onClick={() => setActiveCategoryId(category.id)}
+                  aria-current={category.id === activeCategoryId ? 'true' : undefined}
                 >
                   {category.name}
                 </a>

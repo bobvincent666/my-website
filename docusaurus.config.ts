@@ -77,33 +77,46 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: '内容导航',
+          title: ' ',
+          className: 'footer-col-brand',
           items: [
             {
-              label: '全网AI快讯',
-              to: '/news',
+              html: `<a class="footer-brand" href="/">
+                      <img class="footer-brand__logo" src="/img/logo.svg" alt="深度空间 Logo" />
+                      <span class="footer-brand__name">深度空间</span>
+                    </a>`,
             },
             {
-              label: '技术教程',
-              to: '/tutorials',
+              html: `<span>ICP备案：沪ICP备2026012548号</span>`,
             },
             {
-              label: 'AI工具集',
-              to: '/tools',
+              html: `<span>©2026 spaceseek.tech</span>`,
             },
           ],
         },
         {
-          title: '站点信息',
+          title: '内容导航',
+          className: 'footer-col-nav',
           items: [
+            { label: '全网AI快讯', to: '/news' },
+            { label: '技术教程', to: '/tutorials' },
+            { label: 'AI工具集', to: '/tools' },
+          ],
+        },
+        {
+          title: '站点信息',
+          className: 'footer-col-site',
+          items: [
+            { label: '关于我们', to: '/about' },
             {
-              label: '关于我们',
-              to: '/about',
+              html: `<div class="footer-qrcode">
+                      <div class="footer-qrcode__label">二维码</div>
+                      <img class="footer-qrcode__image" src="/img/qrcode_for_gh.png" alt="二维码" />
+                    </div>`,
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
