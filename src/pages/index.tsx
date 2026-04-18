@@ -5,6 +5,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import {home} from '@site/src/data/home';
 
 import styles from './index.module.css';
 
@@ -15,38 +16,32 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className={clsx('container', styles.heroInner)}>
         <div className={styles.heroCopy}>
-          <p className={styles.kicker}>AI 资讯与实战内容聚合站</p>
+          <p className={styles.kicker}>{home.hero.kicker}</p>
           <Heading as="h1" className="hero__title">
             {siteConfig.title}
           </Heading>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
           <div className={styles.buttons}>
-            <Link className="button button--secondary button--lg" to="/news">
-              查看全网AI快讯
+            <Link className="button button--secondary button--lg" to={home.hero.primaryButton.to}>
+              {home.hero.primaryButton.label}
             </Link>
-            <Link className="button button--secondary button--lg" to="/tutorials">
-              浏览技术教程
+            <Link className="button button--secondary button--lg" to={home.hero.secondaryButton.to}>
+              {home.hero.secondaryButton.label}
             </Link>
           </div>
         </div>
         <div className={styles.heroPanel}>
           <div className={styles.heroStatCard}>
-            <strong>每日精选</strong>
-            <span>覆盖产品动态、模型进展、开发实践与工具清单。</span>
+            <strong>{home.hero.statCard.title}</strong>
+            <span>{home.hero.statCard.description}</span>
           </div>
           <div className={styles.heroStatGrid}>
-            <div>
-              <strong>24h</strong>
-              <span>热门快讯</span>
-            </div>
-            <div>
-              <strong>专题</strong>
-              <span>技术教程</span>
-            </div>
-            <div>
-              <strong>精选</strong>
-              <span>AI工具集</span>
-            </div>
+            {home.hero.stats.map((stat) => (
+              <div key={`${stat.value}-${stat.label}`}>
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

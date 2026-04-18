@@ -1,6 +1,10 @@
 import type {ReactNode} from 'react';
 import Heading from '@theme/Heading';
-import type {TutorialDetailItem, TutorialDetailSection, TutorialDetailSubsection} from '@site/src/data/tutorialDetails';
+import type {
+  TutorialDetailItem,
+  TutorialDetailSection,
+  TutorialDetailSubsection,
+} from '@site/src/data/tutorialDetails';
 
 type TutorialDetailContentProps = {
   item: TutorialDetailItem;
@@ -20,7 +24,7 @@ export default function TutorialDetailContent({item}: TutorialDetailContentProps
 
       {item.references?.length ? (
         <section>
-          <Heading as="h2">参考资料</Heading>
+          <Heading as="h2">References</Heading>
           <ul>
             {item.references.map((reference) => (
               <li key={`${reference.label}-${reference.url}`}>

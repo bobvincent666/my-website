@@ -1,0 +1,59 @@
+{
+  "featuredTutorialItem": {
+    "id": "claudecode",
+    "path": "/tutorials/claudecode",
+    "link": "/tutorials/claudecode",
+    "title": "打工人的赛博朋克起义：24claw.icu，一个匿名吐槽墙的诞生",
+    "description": "在 AI 席卷职场的今天，一个赛博朋克风格的匿名吐槽社区正在悄然走红。我们从产品设计、社区文化和独立开发的角度拆解这个现象。",
+    "categories": ["最新文章"],
+    "date": "2026年3月7日",
+    "image": "/img/tutotials_header_compressed.png",
+    "tone": "violet"
+  },
+  "tutorialItems": [
+    {
+      "id": "claudecode",
+      "path": "/tutorials/claudecode",
+      "link": "/tutorials/claudecode",
+      "title": "Claude Code：一个强大的 AI 代码助手，帮助你更高效地完成开发任务",
+      "description": "围绕 Claude Code 的能力边界、使用方式、典型工作流与实战经验，整理成一篇适合阅读与发布的完整教程。",
+      "categories": ["开源项目"],
+      "date": "2026年2月7日",
+      "image": "/img/news4.png",
+      "tone": "orange"
+    },
+    {
+      "id": "knowledge-base",
+      "path": "/tutorials/knowledge-base",
+      "link": "/tutorials/knowledge-base",
+      "title": "从 0 到 1 搭建 AI 知识库：文档整理、检索、问答与迭代优化",
+      "description": "适合中小团队的知识库实战指南，从资料治理、切片、检索到评测闭环，用一条更稳的路线把 RAG 真正跑通。",
+      "categories": ["AI 工作流", "知识库"],
+      "date": "2026年4月8日",
+      "image": "/img/news2.png",
+      "tone": "violet"
+    },
+    {
+      "id": "clawfeed",
+      "path": "/tutorials/clawfeed",
+      "link": "/tutorials/clawfeed",
+      "title": "信息过载终结者！2026 开源 AI 新闻摘要神器 ClawFeed",
+      "description": "ClawFeed 不只是新闻抓取器，而是一套把采集、去重、摘要、分类与分发串起来的开源 AI 信息流系统。",
+      "categories": ["开源项目"],
+      "date": "2026年4月8日",
+      "image": "/img/tutorials6.png",
+      "tone": "orange"
+    },
+    {
+      "id": "monkeycode",
+      "path": "/tutorials/monkeycode",
+      "link": "/tutorials/monkeycode",
+      "title": "离线 AI 神器 MonkeyCode：Docker 一键部署，数据永不外泄的部署指北",
+      "description": "MonkeyCode 是面向团队协作与私有代码库场景的开源 AI 编程助手，重点价值在于本地化、可控性与企业可接入性。",
+      "categories": ["开源项目", "编程工具"],
+      "date": "2026年4月8日",
+      "image": "/img/tutorials7.png",
+      "tone": "blue"
+    }
+  ]
+}

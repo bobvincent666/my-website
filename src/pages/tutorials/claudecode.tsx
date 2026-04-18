@@ -8,18 +8,20 @@ export default function TutorialsClaudecodePage(): ReactNode {
   const item = getTutorialItemByLink('/tutorials/claudecode');
 
   return (
-    <Layout title="Claude Code 入门到精通" description="Claude Code 是由 Anthropic 公司推出的面向开发者的智能编码助手。">
-     <TutorialArticlePage
-        title="Claude Code：一个开源的 AI 代码助手，助你轻松驾驭编程挑战"
-        description="Claude Code 能自动从数十个来源抓取内容，用 AI 生成高质量、结构清晰的摘要，按 4 小时 / 每日 / 每周 / 每月四种频率推送给你。"
-        date="2026年02月27日"
-        categories={['开源项目']}
-        heroTone="orange"
+    <Layout
+      title="Claude Code Guide"
+      description="A practical guide to Claude Code for developer workflows."
+    >
+      <TutorialArticlePage
+        title="Claude Code: an AI coding assistant for faster development workflows"
+        description="A structured long-form tutorial covering Claude Code concepts, usage patterns, and practical workflow ideas."
+        date={item?.date ?? '2026-02-07'}
+        categories={item?.categories ?? ['Open Source']}
+        heroTone={item?.tone ?? 'orange'}
         heroImage={item?.image}
       >
         <ClaudeCodeContent />
       </TutorialArticlePage>
     </Layout>
-     
   );
 }

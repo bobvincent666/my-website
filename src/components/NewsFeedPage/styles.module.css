@@ -13,12 +13,18 @@
 }
 
 .breadcrumb a {
-  color: inherit;
+  color: #64748b;
   text-decoration: none;
+  transition: color 160ms ease;
 }
 
 .breadcrumb a:hover {
   color: #2563eb;
+}
+
+.breadcrumb > :last-child {
+  color: #0f172a;
+  font-weight: 600;
 }
 
 .hero {

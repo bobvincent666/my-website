@@ -1,0 +1,260 @@
+{
+  "hero": {
+    "kicker": "AI 资讯与实战内容聚合站",
+    "primaryButton": {
+      "label": "查看全网AI快讯",
+      "to": "/news"
+    },
+    "secondaryButton": {
+      "label": "浏览技术教程",
+      "to": "/tutorials"
+    },
+    "statCard": {
+      "title": "每日精选",
+      "description": "覆盖产品动态、模型进展、开发实践与工具清单。"
+    },
+    "stats": [
+      {
+        "value": "24h",
+        "label": "热门快讯"
+      },
+      {
+        "value": "专题",
+        "label": "技术教程"
+      },
+      {
+        "value": "精选",
+        "label": "AI工具集"
+      }
+    ]
+  },
+  "sections": {
+    "news": {
+      "id": "home-news",
+      "kind": "news",
+      "title": "全网AI快讯",
+      "moreTo": "/news",
+      "moreLabel": "更多",
+      "items": [
+        {
+          "id": "ai-news-1",
+          "kind": "news",
+          "title": "OpenAI 发布新一代开发能力更新，Agent 工作流进一步落地",
+          "summary": "围绕开发者调用链、工具能力与工作流协作的更新成为今日讨论焦点。",
+          "path": "/news/detail?id=ai-news-1",
+          "categories": [
+            "全网AI快讯"
+          ],
+          "sourceName": "站点编辑部",
+          "publishedLabel": "本周",
+          "coverImage": "/img/tutorials8.png",
+          "tone": "dark"
+        },
+        {
+          "id": "ai-news-2",
+          "kind": "news",
+          "title": "多家模型厂商同日更新 API 能力，价格与上下文长度竞争升温",
+          "summary": "从推理成本到长上下文支持，最新一轮产品调整开始影响团队选型。",
+          "path": "/news/detail?id=ai-news-2",
+          "categories": [
+            "全网AI快讯"
+          ],
+          "sourceName": "行业观察",
+          "publishedLabel": "本周",
+          "coverImage": "/img/news1.png",
+          "tone": "orange"
+        },
+        {
+          "id": "ai-news-3",
+          "kind": "news",
+          "title": "AI 搜索与知识库产品持续升温，私有化与企业场景成为热点",
+          "summary": "企业用户对可控部署、知识权限与可追溯回答的需求正在快速增长。",
+          "path": "/news/detail?id=ai-news-3",
+          "categories": [
+            "全网AI快讯"
+          ],
+          "sourceName": "趋势追踪",
+          "publishedLabel": "本周",
+          "coverImage": "/img/news2.png",
+          "tone": "blue"
+        },
+        {
+          "id": "ai-news-4",
+          "kind": "news",
+          "title": "开源生态一周回顾：推理框架、RAG 组件与 Agent 模板持续活跃",
+          "summary": "新的开源项目不断涌现，落地速度和可复用性都在提升。",
+          "path": "/news/detail?id=ai-news-4",
+          "categories": [
+            "全网AI快讯"
+          ],
+          "sourceName": "开源雷达",
+          "publishedLabel": "本周",
+          "coverImage": "/img/news3.png",
+          "tone": "violet"
+        }
+      ]
+    },
+    "tutorials": {
+      "id": "home-tutorials",
+      "kind": "tutorial",
+      "title": "技术教程",
+      "moreTo": "/tutorials",
+      "moreLabel": "更多",
+      "items": [
+        {
+          "id": "tutorial-claudecode",
+          "kind": "tutorial",
+          "title": "Cursor 与 Claude Code 如何配合使用，搭建高效 AI 编程工作流",
+          "summary": "从需求拆解、生成代码到 review 与修复，整理一套实用协作方式。",
+          "path": "/tutorials/claudecode",
+          "categories": [
+            "技术教程"
+          ],
+          "sourceName": "StepOne",
+          "publishedLabel": "2025年2月8日",
+          "coverImage": "/img/news4.png",
+          "tone": "dark"
+        },
+        {
+          "id": "tutorial-knowledge-base",
+          "kind": "tutorial",
+          "title": "从零开始搭建本地 AI 知识库，适合个人和小团队快速上手",
+          "summary": "覆盖文档导入、分段、召回与答案生成，帮助你形成完整闭环。",
+          "path": "/tutorials/knowledge-base",
+          "categories": [
+            "技术教程"
+          ],
+          "sourceName": "StepOne",
+          "publishedLabel": "2025年2月3日",
+          "coverImage": "/img/tutorials5.png",
+          "tone": "gold"
+        },
+        {
+          "id": "tutorial-clawfeed",
+          "kind": "tutorial",
+          "title": "信息过载终结者：2026 开源 AI 新闻摘要神器 ClawFeed",
+          "summary": "ClawFeed 能自动从数十个来源抓取内容，用 AI 生成高质量、结构清晰的摘要，并按多种频率推送。",
+          "path": "/tutorials/clawfeed",
+          "categories": [
+            "开源项目"
+          ],
+          "sourceName": "StepOne",
+          "publishedLabel": "2026年2月7日",
+          "coverImage": "/img/tutorials6.png",
+          "tone": "orange"
+        },
+        {
+          "id": "tutorial-monkeycode",
+          "kind": "tutorial",
+          "title": "离线 AI 神器 MonkeyCode：Docker 一键部署，数据永不外泄的方案指南",
+          "summary": "MonkeyCode 是一个开源的企业级 AI 编程助手，支持完全私有化、离线部署，适用于研发团队和敏感行业。",
+          "path": "/tutorials/monkeycode",
+          "categories": [
+            "开源项目"
+          ],
+          "sourceName": "StepOne",
+          "publishedLabel": "2026年1月3日",
+          "coverImage": "/img/tutorials7.png",
+          "tone": "blue"
+        }
+      ]
+    },
+    "tools": {
+      "id": "home-tools",
+      "kind": "tool",
+      "title": "AI工具集",
+      "moreTo": "/tools",
+      "moreLabel": "更多",
+      "items": [
+        {
+          "id": "home-tool-qwen-chat",
+          "kind": "tool",
+          "title": "Qwen Chat",
+          "summary": "阿里通义系对话与推理入口",
+          "path": "https://qwenchat.ai",
+          "categories": [
+            "AI工具集"
+          ],
+          "logoText": "Q"
+        },
+        {
+          "id": "home-tool-grok-ai",
+          "kind": "tool",
+          "title": "Grok AI",
+          "summary": "面向实时信息与对话场景",
+          "path": "https://grok.com",
+          "categories": [
+            "AI工具集"
+          ],
+          "logoText": "G"
+        },
+        {
+          "id": "home-tool-deepseek",
+          "kind": "tool",
+          "title": "DeepSeek",
+          "summary": "推理与代码能力关注度高",
+          "path": "https://chat.deepseek.com",
+          "categories": [
+            "AI工具集"
+          ],
+          "logoText": "D"
+        },
+        {
+          "id": "home-tool-doubao",
+          "kind": "tool",
+          "title": "豆包",
+          "summary": "适合中文日常使用与创作",
+          "path": "https://www.doubao.com",
+          "categories": [
+            "AI工具集"
+          ],
+          "logoText": "豆"
+        },
+        {
+          "id": "home-tool-yiyan",
+          "kind": "tool",
+          "title": "文心一言",
+          "summary": "百度生态内的中文 AI 助手",
+          "path": "https://yiyan.baidu.com",
+          "categories": [
+            "AI工具集"
+          ],
+          "logoText": "文"
+        },
+        {
+          "id": "home-tool-yuanbao",
+          "kind": "tool",
+          "title": "腾讯元宝",
+          "summary": "面向办公与通用问答场景",
+          "path": "https://yuanbao.tencent.com",
+          "categories": [
+            "AI工具集"
+          ],
+          "logoText": "元"
+        },
+        {
+          "id": "home-tool-gemini",
+          "kind": "tool",
+          "title": "Gemini",
+          "summary": "Google 生态中的多模态工具",
+          "path": "https://gemini.google.com",
+          "categories": [
+            "AI工具集"
+          ],
+          "logoText": "Gm"
+        },
+        {
+          "id": "home-tool-kimi",
+          "kind": "tool",
+          "title": "Kimi",
+          "summary": "长文本处理与检索体验突出",
+          "path": "https://kimi.moonshot.cn",
+          "categories": [
+            "AI工具集"
+          ],
+          "logoText": "K"
+        }
+      ]
+    }
+  }
+}
