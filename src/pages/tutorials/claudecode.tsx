@@ -1,9 +1,12 @@
 import type {ReactNode} from 'react';
 import Layout from '@theme/Layout';
 import TutorialArticlePage from '@site/src/components/TutorialArticlePage';
+import {getTutorialItemByLink} from '@site/src/data/tutorialItems';
 import ClaudeCodeContent from '@site/blog/Claude-Code.md';
 
 export default function TutorialsClaudecodePage(): ReactNode {
+  const item = getTutorialItemByLink('/tutorials/claudecode');
+
   return (
     <Layout title="Claude Code 入门到精通" description="Claude Code 是由 Anthropic 公司推出的面向开发者的智能编码助手。">
      <TutorialArticlePage
@@ -12,6 +15,7 @@ export default function TutorialsClaudecodePage(): ReactNode {
         date="2026年02月27日"
         categories={['开源项目']}
         heroTone="orange"
+        heroImage={item?.image}
       >
         <ClaudeCodeContent />
       </TutorialArticlePage>

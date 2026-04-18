@@ -1,4 +1,5 @@
 import type {ReactNode} from 'react';
+import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
@@ -10,6 +11,7 @@ type NewsDetailPageProps = {
   categories: string[];
   heroTone?: 'violet' | 'blue' | 'orange';
   children: ReactNode;
+  sidebar?: ReactNode;
 };
 
 export default function NewsDetailPage({
@@ -19,12 +21,17 @@ export default function NewsDetailPage({
   categories,
   heroTone = 'blue',
   children,
+  sidebar,
 }: NewsDetailPageProps): ReactNode {
   return (
     <Layout title={title} description={description}>
       <div className={styles.page}>
         <div className="container">
-          <div className={styles.breadcrumb}>首页 / 全部文章</div>
+          <div className={styles.breadcrumb}>
+            <Link to="/">首页</Link>
+            <span> / </span>
+            <Link to="/news">全部AI快讯</Link>
+          </div>
 
           <section className={`${styles.hero} ${styles[`hero${capitalize(heroTone)}`]}`}>
             <div className={styles.heroInner}>
@@ -50,7 +57,10 @@ export default function NewsDetailPage({
               ))}
               <span className={styles.metaDate}>{date}</span>
             </div>
-            <div className={styles.content}>{children}</div>
+            <div className={styles.articleGrid}>
+              <div className={styles.content}>{children}</div>
+              {sidebar ? <aside className={styles.sidebar}>{sidebar}</aside> : null}
+            </div>
           </article>
         </div>
       </div>
