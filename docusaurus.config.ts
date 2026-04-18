@@ -66,8 +66,8 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
-        {to: '/', label: '首页', position: 'left'},
-        {to: '/news', label: '全网AI快讯', position: 'left'},
+        {to: '/', label: '首页', position: 'left', exact: true},
+        {to: '/news', label: '全部AI快讯', position: 'left'},
         {to: '/tutorials', label: '技术教程', position: 'left'},
         {to: '/tools', label: 'AI工具集', position: 'left'},
         {to: '/about', label: '关于我们', position: 'left'},
@@ -98,16 +98,16 @@ const config: Config = {
           title: '内容导航',
           className: 'footer-col-nav',
           items: [
-            { label: '全网AI快讯', to: '/news' },
-            { label: '技术教程', to: '/tutorials' },
-            { label: 'AI工具集', to: '/tools' },
+            {label: '全部AI快讯', to: '/news'},
+            {label: '技术教程', to: '/tutorials'},
+            {label: 'AI工具集', to: '/tools'},
           ],
         },
         {
           title: '站点信息',
           className: 'footer-col-site',
           items: [
-            { label: '关于我们', to: '/about' },
+            {label: '关于我们', to: '/about'},
             {
               html: `<div class="footer-qrcode">
                       <div class="footer-qrcode__label">二维码</div>
