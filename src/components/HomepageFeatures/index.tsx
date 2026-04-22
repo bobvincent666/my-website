@@ -2,7 +2,7 @@ import type {ReactNode} from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
-import {home, type HomeListItem, type HomeSection} from '@site/src/data/home';
+import type {HomeData, HomeSection} from '@site/src/data/home';
 import styles from './styles.module.css';
 
 function SectionHeader({
@@ -86,7 +86,7 @@ function capitalize(value: string) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
-export default function HomepageFeatures(): ReactNode {
+export default function HomepageFeatures({home}: {home: HomeData}): ReactNode {
   return (
     <div className={styles.pageShell}>
       <div className="container">

@@ -1,10 +1,10 @@
 import type {ReactNode} from 'react';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
-import {newsItems} from '@site/src/data/newsItems';
+import type {ContentListItem} from '@site/src/data/contentModels';
 import styles from './styles.module.css';
 
-export default function NewsFeedPage(): ReactNode {
+export default function NewsFeedPage({items}: {items: ContentListItem[]}): ReactNode {
   return (
     <div className={styles.page}>
       <div className="container">
@@ -19,44 +19,43 @@ export default function NewsFeedPage(): ReactNode {
             <div>
               <p className={styles.heroKicker}>快讯</p>
               <Heading as="h1" className={styles.heroTitle}>
-                最新 AI 行业动向日报
+                最新 AI 行业动态日报
               </Heading>
-              <p className={styles.heroDesc}>2025 全球人工智能最新动态与趋势解读</p>
+              <p className={styles.heroDesc}>聚合最新的 AI 行业变化、产品更新与趋势观察</p>
             </div>
-            {/* <span className={styles.heroAction}>我要爆料</span> */}
           </div>
         </div>
 
         <div className={styles.list}>
-          {newsItems.map((item) => (
+          {items.map((item) => (
             <Link
               key={item.id}
               className={styles.itemLink}
-              to={item.href}
+              to={item.path}
               aria-label={`查看新闻详情：${item.title}`}
             >
               <article className={styles.item}>
                 <div className={styles.date}>
-                  <span className={styles.month}>{item.month}</span>
-                  <strong className={styles.day}>{item.day}</strong>
+                  <span className={styles.month}>{item.categories[0] ?? 'AI快讯'}</span>
+                  <strong className={styles.day}>{item.publishedLabel ?? '--'}</strong>
                 </div>
                 <div className={styles.main}>
                   <Heading as="h2" className={styles.title}>
                     {item.title}
                   </Heading>
                   <div className={styles.meta}>
-                    <span>{item.time}</span>
-                    <span>{`作者：${item.source}`}</span>
+                    <span>{item.publishedLabel ?? '最新更新'}</span>
+                    <span>{`来源：${item.sourceName ?? '站点编辑部'}`}</span>
                   </div>
-                  <p className={styles.excerpt}>{item.excerpt}</p>
+                  <p className={styles.excerpt}>{item.summary}</p>
                   <div className={styles.footer}>
                     <span>点击查看详情</span>
-                    <span>★</span>
-                    <span>◎</span>
+                    <span>•</span>
+                    <span>{item.kind}</span>
                     <span>→</span>
                   </div>
                 </div>
-                {item.withThumb ? <div className={styles.thumb} /> : null}
+                {item.coverImage ? <div className={styles.thumb} /> : null}
               </article>
             </Link>
           ))}

@@ -1,10 +1,6 @@
 import type {ReactNode} from 'react';
 import Heading from '@theme/Heading';
-import type {
-  TutorialDetailItem,
-  TutorialDetailSection,
-  TutorialDetailSubsection,
-} from '@site/src/data/tutorialDetails';
+import type {ContentSectionBlock, TutorialDetailItem} from '@site/src/data/contentModels';
 
 type TutorialDetailContentProps = {
   item: TutorialDetailItem;
@@ -40,11 +36,7 @@ export default function TutorialDetailContent({item}: TutorialDetailContentProps
   );
 }
 
-function RenderBlock({
-  section,
-}: {
-  section: TutorialDetailSection | TutorialDetailSubsection;
-}): ReactNode {
+function RenderBlock({section}: {section: ContentSectionBlock}): ReactNode {
   return (
     <>
       {section.paragraphs?.map((paragraph) => (

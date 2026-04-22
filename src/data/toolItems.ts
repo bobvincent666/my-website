@@ -16,7 +16,7 @@ export type ToolItem = {
   url: string;
   likes: number;
   logoText: string;
-  tone: 'violet' | 'blue' | 'green' | 'dark' | 'pink';
+  tone: 'violet' | 'blue' | 'green' | 'dark' | 'pink' | 'red';
 };
 
 export const toolCategories: ToolCategory[] = [

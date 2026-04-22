@@ -43,6 +43,7 @@ export type ContentListItem = {
   sourceName?: string;
   coverImage?: string;
   tone?: ContentTone;
+  logoText?: string;
 };
 
 export type NewsDetailItem = {

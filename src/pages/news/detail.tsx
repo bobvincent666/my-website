@@ -3,7 +3,9 @@ import Link from '@docusaurus/Link';
 import {useLocation} from '@docusaurus/router';
 import Heading from '@theme/Heading';
 import NewsDetailPageComponent from '@site/src/components/NewsDetailPage';
-import {getNewsItemById} from '@site/src/data/newsItems';
+import RemoteContentState from '@site/src/components/RemoteContentState';
+import {getNewsDetailData} from '@site/src/data/contentApi';
+import {useRemoteData} from '@site/src/hooks/useRemoteData';
 import styles from '@site/src/components/NewsDetailPage/styles.module.css';
 
 function NewsDetailFallback(): ReactNode {
@@ -13,8 +15,7 @@ function NewsDetailFallback(): ReactNode {
       description="当前新闻参数不存在或已失效。"
       date="请返回列表页重试"
       categories={['全网AI快讯']}
-      heroTone="blue"
-    >
+      heroTone="blue">
       <p>当前新闻内容没有找到，可能是跳转参数缺失或对应数据已经调整。</p>
       <p>
         <Link to="/news">返回全网AI快讯</Link>
@@ -26,7 +27,15 @@ function NewsDetailFallback(): ReactNode {
 export default function NewsDetailPage(): ReactNode {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const item = getNewsItemById(params.get('id'));
+  const id = params.get('id');
+  const {data: item, loading, error} = useRemoteData(
+    () => (id ? getNewsDetailData(id) : Promise.resolve(null)),
+    [id],
+  );
+
+  if (loading || error) {
+    return <RemoteContentState loading={loading} error={error} empty={false} backTo="/news" />;
+  }
 
   if (!item) {
     return <NewsDetailFallback />;
@@ -35,8 +44,8 @@ export default function NewsDetailPage(): ReactNode {
   return (
     <NewsDetailPageComponent
       title={item.title}
-      description={item.excerpt}
-      date={`${item.month}${item.day}日 ${item.time}`}
+      description={item.summary}
+      date={item.publishedLabel ?? '最新更新'}
       categories={item.categories}
       heroTone="blue"
       sidebar={
@@ -75,21 +84,20 @@ export default function NewsDetailPage(): ReactNode {
             </section>
           ) : null}
         </>
-      }
-    >
+      }>
       <section className={styles.contentSection}>
         <Heading as="h2" className={styles.sectionTitle}>
           核心摘要
         </Heading>
-        <p>{item.excerpt}</p>
-        <p>来源：{item.source}</p>
+        <p>{item.summary}</p>
+        <p>来源：{item.sourceName}</p>
       </section>
 
       <section className={styles.contentSection}>
         <Heading as="h2" className={styles.sectionTitle}>
           详细解读
         </Heading>
-        {item.detail.map((paragraph) => (
+        {item.body.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
       </section>
@@ -103,8 +111,7 @@ export default function NewsDetailPage(): ReactNode {
             {item.timeline.map((timelineItem) => (
               <article
                 key={`${timelineItem.date}-${timelineItem.title}`}
-                className={styles.timelineItem}
-              >
+                className={styles.timelineItem}>
                 <span className={styles.timelineDate}>{timelineItem.date}</span>
                 <h3 className={styles.timelineItemTitle}>{timelineItem.title}</h3>
                 <p className={styles.timelineItemDesc}>{timelineItem.description}</p>

@@ -1,6 +1,7 @@
 import type {ReactNode} from 'react';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
+import type {ContentTone} from '@site/src/data/contentModels';
 import styles from './styles.module.css';
 
 type TutorialArticlePageProps = {
@@ -8,7 +9,7 @@ type TutorialArticlePageProps = {
   description: string;
   date: string;
   categories: string[];
-  heroTone?: 'violet' | 'blue' | 'orange';
+  heroTone?: ContentTone;
   heroImage?: string;
   children: ReactNode;
 };
