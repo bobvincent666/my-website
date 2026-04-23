@@ -17,6 +17,11 @@ function adaptNewsListItem(item: NewsItem): ContentListItem {
     categories: item.categories,
     path: item.href,
     publishedLabel: buildPublishedLabel(item),
+    dateParts: {
+      month: item.month,
+      day: item.day,
+      time: item.time,
+    },
     sourceName: item.source,
   };
 }

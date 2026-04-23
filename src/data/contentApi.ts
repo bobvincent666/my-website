@@ -29,7 +29,14 @@ export type ToolListResponse = {
   total: number;
 };
 
-const API_BASE_URL = 'http://localhost:5240';
+// const API_BASE_URL = 'http://localhost:5240';
+// const CONTENT_API_PREFIX = `${API_BASE_URL}/api/content`;
+
+// 生产
+const API_BASE_URL = '';
+//测试
+// const API_BASE_URL = 'http://spaceseek.tech';
+
 const CONTENT_API_PREFIX = `${API_BASE_URL}/api/content`;
 
 async function requestContent<T>(path: string): Promise<T> {

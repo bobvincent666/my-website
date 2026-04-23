@@ -1,10 +1,17 @@
 import type {ReactNode} from 'react';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
+import {getNewsListItems} from '@site/src/data/adapters/newsAdapter';
 import type {ContentListItem} from '@site/src/data/contentModels';
 import styles from './styles.module.css';
 
-export default function NewsFeedPage({items}: {items: ContentListItem[]}): ReactNode {
+type NewsFeedPageProps = {
+  items?: ContentListItem[];
+};
+
+export default function NewsFeedPage({items}: NewsFeedPageProps): ReactNode {
+  const resolvedItems = items ?? getNewsListItems();
+
   return (
     <div className={styles.page}>
       <div className="container">
@@ -27,7 +34,7 @@ export default function NewsFeedPage({items}: {items: ContentListItem[]}): React
         </div>
 
         <div className={styles.list}>
-          {items.map((item) => (
+          {resolvedItems.map((item) => (
             <Link
               key={item.id}
               className={styles.itemLink}
