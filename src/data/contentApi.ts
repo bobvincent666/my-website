@@ -33,9 +33,9 @@ export type ToolListResponse = {
 // const CONTENT_API_PREFIX = `${API_BASE_URL}/api/content`;
 
 // 生产
-const API_BASE_URL = '';
+// const API_BASE_URL = '';
 //测试
-// const API_BASE_URL = 'http://spaceseek.tech';
+const API_BASE_URL = 'http://spaceseek.tech';
 
 const CONTENT_API_PREFIX = `${API_BASE_URL}/api/content`;
 

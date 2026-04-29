@@ -8,12 +8,12 @@
 .brandWrap {
   position: absolute;
   top: 2.5rem;
-  left: 3rem;
+  right: 3rem;
 }
 
 .brand {
-  width: 8.5rem;
-  max-width: 24vw;
+  width: 4.5rem;
+  max-width: 15vw;
   height: auto;
   object-fit: contain;
 }
