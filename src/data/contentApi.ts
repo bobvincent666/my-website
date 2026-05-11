@@ -1,4 +1,4 @@
-import type {HomeData} from '@site/src/data/home';
+import {home as localHomeData, type HomeData, type HomeSection} from '@site/src/data/home';
 import type {
   ContentListItem,
   NewsDetailItem,
@@ -40,6 +40,43 @@ const API_BASE_URL = 'http://localhost:5240';
 
 const CONTENT_API_PREFIX = `${API_BASE_URL}/api/content`;
 
+function normalizeAssetUrl(value?: string): string | undefined {
+  if (!value) {
+    return undefined;
+  }
+
+  if (/^(https?:)?\/\//.test(value) || value.startsWith('data:')) {
+    return value;
+  }
+
+  if (value.startsWith('/uploads/')) {
+    return `${API_BASE_URL}${value}`;
+  }
+
+  return value;
+}
+
+function normalizeHomeSection(section: HomeSection, fallbackSection?: HomeSection): HomeSection {
+  return {
+    ...section,
+    items: section.items.map((item, index) => ({
+      ...item,
+      coverImage: normalizeAssetUrl(item.coverImage ?? fallbackSection?.items[index]?.coverImage),
+    })),
+  };
+}
+
+function normalizeHomeData(data: HomeData): HomeData {
+  return {
+    ...data,
+    sections: {
+      news: normalizeHomeSection(data.sections.news, localHomeData.sections.news),
+      tutorials: normalizeHomeSection(data.sections.tutorials, localHomeData.sections.tutorials),
+      tools: normalizeHomeSection(data.sections.tools, localHomeData.sections.tools),
+    },
+  };
+}
+
 async function requestContent<T>(path: string): Promise<T> {
   const response = await fetch(`${CONTENT_API_PREFIX}${path}`);
   if (!response.ok) {
@@ -55,7 +92,7 @@ async function requestContent<T>(path: string): Promise<T> {
 }
 
 export function getHomeData(): Promise<HomeData> {
-  return requestContent<HomeData>('/home');
+  return requestContent<HomeData>('/home').then(normalizeHomeData);
 }
 
 export function getNewsListData(): Promise<NewsListResponse> {
