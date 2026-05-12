@@ -30,7 +30,18 @@ export type ToolListResponse = {
 };
 
 // 本地
-const API_BASE_URL = 'http://localhost:5240';
+function getApiBaseUrl(): string {
+  if (typeof window === 'undefined') {
+    return 'http://localhost:5240';
+  }
+
+  const {hostname} = window.location;
+  if (hostname === 'localhost' || hostname === '127.0.0.1') {
+    return 'http://localhost:5240';
+  }
+
+  return '';
+}
 
 // 生产
 // const API_BASE_URL = '';
@@ -38,7 +49,9 @@ const API_BASE_URL = 'http://localhost:5240';
 //测试
 // const API_BASE_URL = 'http://spaceseek.tech';
 
-const CONTENT_API_PREFIX = `${API_BASE_URL}/api/content`;
+function getContentApiPrefix(): string {
+  return `${getApiBaseUrl()}/api/content`;
+}
 
 function normalizeAssetUrl(value?: string): string | undefined {
   if (!value) {
@@ -50,7 +63,7 @@ function normalizeAssetUrl(value?: string): string | undefined {
   }
 
   if (value.startsWith('/uploads/')) {
-    return `${API_BASE_URL}${value}`;
+    return `${getApiBaseUrl()}${value}`;
   }
 
   return value;
@@ -78,7 +91,7 @@ function normalizeHomeData(data: HomeData): HomeData {
 }
 
 async function requestContent<T>(path: string): Promise<T> {
-  const response = await fetch(`${CONTENT_API_PREFIX}${path}`);
+  const response = await fetch(`${getContentApiPrefix()}${path}`);
   if (!response.ok) {
     throw new Error(`Content request failed with status ${response.status}`);
   }
