@@ -27,12 +27,14 @@ function SectionHeader({
 }
 
 function ContentSection({section}: {section: HomeSection}): ReactNode {
+  const items = section.id === 'home-news' ? section.items.slice(0, 8) : section.items;
+
   return (
     <section className={styles.sectionBlock}>
       <SectionHeader title={section.title} moreLabel={section.moreLabel} moreTo={section.moreTo} />
       <div className={styles.contentGrid}>
-        {section.items.map((item) => (
-          <Link key={item.id} className={styles.contentCard} to={item.path}>
+        {items.map((item) => (
+          <Link key={item.id} className={styles.contentCard} to={item.routePath ?? item.path}>
             <div
               className={clsx(styles.cardVisual, styles[`accent${capitalize(item.tone ?? 'blue')}`])}
               style={{
@@ -69,7 +71,7 @@ function ToolsSection({section}: {section: HomeSection}): ReactNode {
       <SectionHeader title={section.title} moreLabel={section.moreLabel} moreTo={section.moreTo} />
       <div className={styles.toolsGrid}>
         {section.items.map((tool) => (
-          <Link key={tool.id} className={styles.toolCard} to={tool.path}>
+          <Link key={tool.id} className={styles.toolCard} to={tool.routePath ?? tool.path}>
             <div className={styles.toolAvatar}>{tool.logoText}</div>
             <div className={styles.toolBody}>
               <strong>{tool.title}</strong>

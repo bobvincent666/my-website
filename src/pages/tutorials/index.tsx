@@ -7,6 +7,8 @@ import {getTutorialListData} from '@site/src/data/contentApi';
 import {useRemoteData} from '@site/src/hooks/useRemoteData';
 import styles from './styles.module.css';
 
+const FEATURED_TUTORIAL_BACKGROUND = '/img/tutotials_header_compressed.png';
+
 export default function TutorialsPage(): ReactNode {
   const {data, loading, error} = useRemoteData(() => getTutorialListData(), []);
   const featuredTutorialItem = data?.featuredItem;
@@ -26,11 +28,9 @@ export default function TutorialsPage(): ReactNode {
 
             <Link
               className={`${styles.featured} ${styles[`tone${capitalize(featuredTutorialItem.tone ?? 'blue')}`]}`}
-              to={featuredTutorialItem.path}
+              to={featuredTutorialItem.routePath ?? featuredTutorialItem.path}
               style={{
-                backgroundImage: featuredTutorialItem.coverImage
-                  ? `linear-gradient(180deg, rgba(8, 12, 24, 0.2), rgba(8, 12, 24, 0.6)), url('${featuredTutorialItem.coverImage}')`
-                  : undefined,
+                backgroundImage: `linear-gradient(180deg, rgba(8, 12, 24, 0.2), rgba(8, 12, 24, 0.6)), url('${FEATURED_TUTORIAL_BACKGROUND}')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
@@ -51,7 +51,7 @@ export default function TutorialsPage(): ReactNode {
 
             <div className={styles.list}>
               {tutorialItems.map((item) => (
-                <Link key={item.id} className={styles.listItem} to={item.path}>
+                <Link key={item.id} className={styles.listItem} to={item.routePath ?? item.path}>
                   <div
                     className={`${styles.thumb} ${styles[`tone${capitalize(item.tone ?? 'blue')}`]}`}
                     style={{

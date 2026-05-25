@@ -92,7 +92,7 @@
 
 .item {
   display: grid;
-  grid-template-columns: 4.2rem minmax(0, 1fr) 6rem;
+  grid-template-columns: 5.6rem minmax(0, 1fr) 6rem;
   gap: 1rem;
   align-items: start;
   padding: 1.35rem 0.7rem;
@@ -128,19 +128,23 @@
 
 .month {
   width: 100%;
-  padding: 0.35rem 0;
+  padding: 0.42rem 0.2rem 0.34rem;
   color: #7c8798;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  line-height: 1.15;
   text-align: center;
+  white-space: nowrap;
 }
 
 .day {
   width: 100%;
-  height: 3.8rem;
-  padding: 0.58rem 0 0.48rem;
+  min-height: 3.9rem;
+  padding: 0.72rem 0.3rem 0.62rem;
   color: #fff;
-  font-size: 0.9rem;
-  line-height: 1;
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.1;
   text-align: center;
 }
 
@@ -191,7 +195,7 @@
 
 @media screen and (max-width: 996px) {
   .item {
-    grid-template-columns: 4.2rem minmax(0, 1fr);
+    grid-template-columns: 5.6rem minmax(0, 1fr);
   }
 
   .thumb {
@@ -218,6 +222,6 @@
   }
 
   .date {
-    width: 4.2rem;
+    width: 5.6rem;
   }
 }

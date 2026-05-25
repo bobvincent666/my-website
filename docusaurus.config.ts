@@ -101,6 +101,7 @@ const config: Config = {
             {label: '全部AI快讯', to: '/news'},
             {label: '技术教程', to: '/tutorials'},
             {label: 'AI工具集', to: '/tools'},
+            {label: 'SpaceSeekAI Image', href: 'http://image.spaceseek.tech'},
           ],
         },
         {

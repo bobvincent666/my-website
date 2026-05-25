@@ -33,6 +33,7 @@ export type ContentListItem = {
   summary: string;
   categories: string[];
   path: string;
+  routePath?: string;
   publishedAt?: string;
   publishedLabel?: string;
   dateParts?: {
@@ -70,12 +71,14 @@ export type TutorialDetailItem = {
   summary: string;
   categories: string[];
   path: string;
+  contentType?: 'structured' | 'markdown';
   publishedAt?: string;
   publishedLabel?: string;
   coverImage?: string;
   tone?: ContentTone;
-  overview: string;
+  overview?: string;
   sections: ContentSectionBlock[];
+  markdownContent?: string;
   references?: ContentLink[];
 };
 

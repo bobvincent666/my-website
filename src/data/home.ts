@@ -30,6 +30,7 @@ export type HomeListItem = {
   title: string;
   summary: string;
   path: string;
+  routePath?: string;
   categories: string[];
   sourceName?: string;
   publishedLabel?: string;

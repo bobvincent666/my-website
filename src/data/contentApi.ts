@@ -29,7 +29,8 @@ export type ToolListResponse = {
   total: number;
 };
 
-// 本地
+const HOME_NEWS_IMAGE_POOL = Array.from({length: 10}, (_, index) => `/img/news${index + 1}.png`);
+
 function getApiBaseUrl(): string {
   if (typeof window === 'undefined') {
     return 'http://localhost:5240';
@@ -42,12 +43,6 @@ function getApiBaseUrl(): string {
 
   return '';
 }
-
-// 生产
-// const API_BASE_URL = '';
-
-//测试
-// const API_BASE_URL = 'http://spaceseek.tech';
 
 function getContentApiPrefix(): string {
   return `${getApiBaseUrl()}/api/content`;
@@ -69,12 +64,37 @@ function normalizeAssetUrl(value?: string): string | undefined {
   return value;
 }
 
+function resolveHomeNewsCoverImage(index: number): string {
+  return HOME_NEWS_IMAGE_POOL[index % HOME_NEWS_IMAGE_POOL.length];
+}
+
+function normalizeContentListItem(item: ContentListItem): ContentListItem {
+  return {
+    ...item,
+    coverImage: normalizeAssetUrl(item.coverImage),
+  };
+}
+
+function normalizeTutorialDetailItem(item: TutorialDetailItem | null): TutorialDetailItem | null {
+  if (!item) {
+    return null;
+  }
+
+  return {
+    ...item,
+    coverImage: normalizeAssetUrl(item.coverImage),
+  };
+}
+
 function normalizeHomeSection(section: HomeSection, fallbackSection?: HomeSection): HomeSection {
   return {
     ...section,
     items: section.items.map((item, index) => ({
       ...item,
-      coverImage: normalizeAssetUrl(item.coverImage ?? fallbackSection?.items[index]?.coverImage),
+      coverImage:
+        section.id === 'home-news'
+          ? resolveHomeNewsCoverImage(index)
+          : normalizeAssetUrl(item.coverImage ?? fallbackSection?.items[index]?.coverImage),
     })),
   };
 }
@@ -117,13 +137,17 @@ export function getNewsDetailData(id: string): Promise<NewsDetailItem | null> {
 }
 
 export function getTutorialListData(): Promise<TutorialListResponse> {
-  return requestContent<TutorialListResponse>('/tutorials');
+  return requestContent<TutorialListResponse>('/tutorials').then((data) => ({
+    ...data,
+    featuredItem: normalizeContentListItem(data.featuredItem),
+    items: data.items.map(normalizeContentListItem),
+  }));
 }
 
 export function getTutorialDetailData(path: string): Promise<TutorialDetailItem | null> {
   return requestContent<TutorialDetailItem | null>(
     `/tutorials/detail?path=${encodeURIComponent(path)}`,
-  );
+  ).then(normalizeTutorialDetailItem);
 }
 
 export function getToolListData(): Promise<ToolListResponse> {
