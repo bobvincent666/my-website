@@ -12,6 +12,7 @@ type MarkdownBlock =
   | {type: 'ol'; items: string[]}
   | {type: 'blockquote'; text: string}
   | {type: 'code'; code: string}
+  | {type: 'image'; alt: string; url: string}
   | {type: 'hr'};
 
 export default function TutorialMarkdownContent({
@@ -61,6 +62,18 @@ function renderBlock(block: MarkdownBlock, index: number): ReactNode {
         <pre key={index}>
           <code>{block.code}</code>
         </pre>
+      );
+    case 'image':
+      return (
+        <figure key={index} className={styles.imageFigure}>
+          <img
+            className={styles.image}
+            src={resolveMarkdownAssetUrl(block.url)}
+            alt={block.alt || 'tutorial image'}
+            loading="lazy"
+          />
+          {block.alt ? <figcaption className={styles.imageCaption}>{block.alt}</figcaption> : null}
+        </figure>
       );
     case 'hr':
       return <hr key={index} />;
@@ -175,6 +188,14 @@ function parseMarkdown(markdown: string): MarkdownBlock[] {
       continue;
     }
 
+    const imageMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (imageMatch) {
+      flushParagraph();
+      flushList();
+      blocks.push({type: 'image', alt: imageMatch[1].trim(), url: imageMatch[2].trim()});
+      continue;
+    }
+
     flushList();
     paragraphLines.push(trimmed);
   }
@@ -191,7 +212,7 @@ function parseMarkdown(markdown: string): MarkdownBlock[] {
 function renderInline(text: string): ReactNode[] {
   const result: ReactNode[] = [];
   const pattern =
-    /(\[([^\]]+)\]\(([^)]+)\))|(`([^`]+)`)|(\*\*([^*]+)\*\*)|(\*([^*]+)\*)/g;
+    /(!\[([^\]]*)\]\(([^)]+)\))|(\[([^\]]+)\]\(([^)]+)\))|(`([^`]+)`)|(\*\*([^*]+)\*\*)|(\*([^*]+)\*)/g;
 
   let lastIndex = 0;
   let match: RegExpExecArray | null = pattern.exec(text);
@@ -203,16 +224,26 @@ function renderInline(text: string): ReactNode[] {
 
     if (match[1]) {
       result.push(
-        <a key={`${match.index}-link`} href={match[3]} target="_blank" rel="noreferrer">
-          {match[2]}
-        </a>,
+        <img
+          key={`${match.index}-image`}
+          className={styles.inlineImage}
+          src={resolveMarkdownAssetUrl(match[3])}
+          alt={match[2] || 'tutorial image'}
+          loading="lazy"
+        />,
       );
     } else if (match[4]) {
-      result.push(<code key={`${match.index}-code`}>{match[5]}</code>);
-    } else if (match[6]) {
-      result.push(<strong key={`${match.index}-strong`}>{match[7]}</strong>);
-    } else if (match[8]) {
-      result.push(<em key={`${match.index}-em`}>{match[9]}</em>);
+      result.push(
+        <a key={`${match.index}-link`} href={match[6]} target="_blank" rel="noreferrer">
+          {match[5]}
+        </a>,
+      );
+    } else if (match[7]) {
+      result.push(<code key={`${match.index}-code`}>{match[8]}</code>);
+    } else if (match[9]) {
+      result.push(<strong key={`${match.index}-strong`}>{match[10]}</strong>);
+    } else if (match[11]) {
+      result.push(<em key={`${match.index}-em`}>{match[12]}</em>);
     }
 
     lastIndex = pattern.lastIndex;
@@ -224,4 +255,27 @@ function renderInline(text: string): ReactNode[] {
   }
 
   return result;
+}
+
+function resolveMarkdownAssetUrl(value: string): string {
+  if (!value) {
+    return value;
+  }
+
+  if (/^(https?:)?\/\//.test(value) || value.startsWith('data:')) {
+    return value;
+  }
+
+  if (value.startsWith('/uploads/')) {
+    if (typeof window === 'undefined') {
+      return `http://localhost:5240${value}`;
+    }
+
+    const {hostname} = window.location;
+    if (hostname === 'localhost' || hostname === '127.0.0.1') {
+      return `http://localhost:5240${value}`;
+    }
+  }
+
+  return value;
 }

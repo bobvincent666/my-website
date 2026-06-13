@@ -7,7 +7,7 @@ import Heading from '@theme/Heading';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import RemoteContentState from '@site/src/components/RemoteContentState';
 import {getHomeData} from '@site/src/data/contentApi';
-import type {HomeData} from '@site/src/data/home';
+import {home as localHomeData, type HomeData} from '@site/src/data/home';
 import {useRemoteData} from '@site/src/hooks/useRemoteData';
 
 import styles from './index.module.css';
@@ -55,19 +55,31 @@ function HomepageHeader({home}: {home: HomeData}) {
 export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   const {data: home, loading, error} = useRemoteData(() => getHomeData(), []);
+  const displayHome = home ?? localHomeData;
 
   return (
     <Layout title={`${siteConfig.title}`} description="聚合全网 AI 快讯、技术教程与 AI 工具集的首页">
-      {home ? <HomepageHeader home={home} /> : null}
+      <HomepageHeader home={displayHome} />
       <main>
-        <RemoteContentState
-          loading={loading}
-          error={error}
-          empty={!home}
-          emptyTitle="首页数据加载中"
-          emptyDescription="正在从内容接口获取首页数据。"
-        />
-        {home ? <HomepageFeatures home={home} /> : null}
+        {loading && !home ? (
+          <RemoteContentState
+            loading
+            error={null}
+            empty={false}
+            emptyTitle="首页数据加载中"
+            emptyDescription="正在从内容接口获取首页数据。"
+          />
+        ) : null}
+        {error && !home ? (
+          <RemoteContentState
+            loading={false}
+            error={null}
+            empty
+            emptyTitle="首页已切换为本地数据"
+            emptyDescription="接口暂时不可用，当前展示的是项目内置首页内容。"
+          />
+        ) : null}
+        <HomepageFeatures home={displayHome} />
       </main>
     </Layout>
   );
