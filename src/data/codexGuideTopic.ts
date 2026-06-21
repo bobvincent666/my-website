@@ -104,7 +104,7 @@ export const codexGuideRecipesMenuItems: CodexGuideNavChildItem[] = [
 ];
 
 export const codexGuideNavItems: CodexGuideNavItem[] = [
-  {key: 'home', label: '首页', href: `${CODEX_GUIDE_ROUTE}#codex-home`},
+  {key: 'home', label: '大纲', href: `${CODEX_GUIDE_ROUTE}#codex-home`},
   {key: 'guide', label: '学习路线', to: CODEX_GUIDE_GUIDE_OVERVIEW_ROUTE},
   {key: 'platform', label: '入口地图', to: CODEX_GUIDE_PLATFORM_INDEX_ROUTE},
   {key: 'configuration', label: '配置', to: CODEX_GUIDE_CONFIGURATION_INDEX_ROUTE},
