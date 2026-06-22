@@ -1,4 +1,4 @@
-import type {ReactNode} from 'react';
+import {useState, type ReactNode} from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
@@ -72,7 +72,7 @@ function ToolsSection({section}: {section: HomeSection}): ReactNode {
       <div className={styles.toolsGrid}>
         {section.items.map((tool) => (
           <Link key={tool.id} className={styles.toolCard} to={tool.routePath ?? tool.path}>
-            <div className={styles.toolAvatar}>{tool.logoText}</div>
+            <HomeToolLogo logo={tool.logo} logoText={tool.logoText} title={tool.title} />
             <div className={styles.toolBody}>
               <strong>{tool.title}</strong>
               <span>{tool.summary}</span>
@@ -81,6 +81,34 @@ function ToolsSection({section}: {section: HomeSection}): ReactNode {
         ))}
       </div>
     </section>
+  );
+}
+
+function HomeToolLogo({
+  logo,
+  logoText,
+  title,
+}: {
+  logo?: string;
+  logoText?: string;
+  title: string;
+}): ReactNode {
+  const [imageFailed, setImageFailed] = useState(false);
+
+  return (
+    <div className={styles.toolAvatar}>
+      {logo && !imageFailed ? (
+        <img
+          className={styles.toolAvatarImage}
+          src={logo}
+          alt={`${title} logo`}
+          loading="lazy"
+          onError={() => setImageFailed(true)}
+        />
+      ) : (
+        logoText ?? title.slice(0, 2)
+      )}
+    </div>
   );
 }
 

@@ -77,34 +77,53 @@ function withLatestTutorials(home: HomeData): HomeData {
 }
 
 function HomepageHeader({home}: {home: HomeData}) {
-  const {siteConfig} = useDocusaurusContext();
-
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={styles.heroBanner}>
       <div className={clsx('container', styles.heroInner)}>
         <div className={styles.heroCopy}>
-          <p className={styles.kicker}>{home.hero.kicker}</p>
-          <Heading as="h1" className="hero__title">
-            {siteConfig.title}
+          <p className={styles.kicker}>SpaceSeek AI Knowledge Universe</p>
+          <Heading as="h1" className={styles.heroTitle}>
+            在 AI 宇宙中定位下一条技术航线
           </Heading>
-          <p className="hero__subtitle">{siteConfig.tagline}</p>
+          <p className={styles.heroSubtitle}>
+            聚合 AI 快讯、Codex 教程与实用工具，把分散的信息整理成可探索、可行动、可持续更新的知识星图。
+          </p>
           <div className={styles.buttons}>
-            <Link className="button button--secondary button--lg" to={home.hero.primaryButton.to}>
-              {home.hero.primaryButton.label}
+            <Link className={clsx(styles.heroButton, styles.heroButtonPrimary)} to={home.hero.secondaryButton.to}>
+              开始探索教程
             </Link>
-            <Link className="button button--secondary button--lg" to={home.hero.secondaryButton.to}>
-              {home.hero.secondaryButton.label}
+            <Link className={clsx(styles.heroButton, styles.heroButtonSecondary)} to={home.hero.primaryButton.to}>
+              查看 AI 快讯
             </Link>
+          </div>
+          <div className={styles.signalStrip} aria-label="SpaceSeek content signals">
+            <span>AI Radar</span>
+            <span>Codex Guide</span>
+            <span>Tool Atlas</span>
           </div>
         </div>
-        <div className={styles.heroPanel}>
-          <div className={styles.heroStatCard}>
-            <strong>{home.hero.statCard.title}</strong>
-            <span>{home.hero.statCard.description}</span>
+
+        <div className={styles.heroVisual} aria-label="SpaceSeek universe map">
+          <div className={styles.orbitSystem}>
+            <div className={styles.orbitScan} aria-hidden="true" />
+            <div className={clsx(styles.orbitConnector, styles.orbitConnectorNews)} aria-hidden="true" />
+            <div className={clsx(styles.orbitConnector, styles.orbitConnectorCodex)} aria-hidden="true" />
+            <div className={clsx(styles.orbitConnector, styles.orbitConnectorTools)} aria-hidden="true" />
+            <div className={styles.orbitCore}>
+              <img src="/img/brand-spaceseek.png" alt="" aria-hidden="true" />
+              <span>SpaceSeek</span>
+            </div>
+            <div className={clsx(styles.orbitNode, styles.orbitNodeNews)}>News</div>
+            <div className={clsx(styles.orbitNode, styles.orbitNodeCodex)}>Codex</div>
+            <div className={clsx(styles.orbitNode, styles.orbitNodeTools)}>Tools</div>
           </div>
-          <div className={styles.heroStatGrid}>
+          <div className={styles.heroPanel}>
+            <div className={styles.heroStatCard}>
+              <strong>Mission Control</strong>
+              <span>围绕最新 AI 动态、技术教程和工具索引构建首页导航中枢。</span>
+            </div>
             {home.hero.stats.map((stat) => (
-              <div key={`${stat.value}-${stat.label}`}>
+              <div className={styles.heroStatRow} key={`${stat.value}-${stat.label}`}>
                 <strong>{stat.value}</strong>
                 <span>{stat.label}</span>
               </div>

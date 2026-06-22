@@ -45,6 +45,7 @@ export type ContentListItem = {
   coverImage?: string;
   tone?: ContentTone;
   logoText?: string;
+  logo?: string;
 };
 
 export type NewsDetailItem = {
@@ -97,5 +98,6 @@ export type ToolDetailItem = {
   website: string;
   likes: number;
   logoText: string;
+  logo?: string;
   tone: ContentTone;
 };

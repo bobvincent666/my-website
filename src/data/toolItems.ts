@@ -16,6 +16,7 @@ export type ToolItem = {
   url: string;
   likes: number;
   logoText: string;
+  logo?: string;
   tone: 'violet' | 'blue' | 'green' | 'dark' | 'pink' | 'red';
 };
 
@@ -57,6 +58,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://qwenchat.ai',
     likes: 0,
     logoText: 'Q',
+    logo: '/tools-logo/qwen-chat.ico',
     tone: 'violet',
   },
   {
@@ -76,6 +78,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://grok.com/',
     likes: 0,
     logoText: 'X',
+    logo: '/tools-logo/grok-ai.png',
     tone: 'dark',
   },
   {
@@ -95,6 +98,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://chat.deepseek.com/',
     likes: 0,
     logoText: 'DS',
+    logo: '/tools-logo/deepseek.png',
     tone: 'blue',
   },
   {
@@ -114,6 +118,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.xingyeai.com/',
     likes: 0,
     logoText: '星',
+    logo: '/tools-logo/xingye-ai.png',
     tone: 'dark',
   },
   {
@@ -133,6 +138,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://chatglm.cn/',
     likes: 0,
     logoText: 'Z',
+    logo: '/tools-logo/zhipu-qingyan.ico',
     tone: 'blue',
   },
   {
@@ -152,6 +158,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://yiyan.baidu.com/',
     likes: 0,
     logoText: '文',
+    logo: '/tools-logo/ernie-bot.ico',
     tone: 'blue',
   },
   {
@@ -171,6 +178,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://yuanbao.tencent.com/',
     likes: 0,
     logoText: '元',
+    logo: '/tools-logo/yuanbao.png',
     tone: 'green',
   },
   {
@@ -190,6 +198,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://gemini.google.com/',
     likes: 0,
     logoText: 'G',
+    logo: '/tools-logo/gemini.png',
     tone: 'blue',
   },
   {
@@ -209,6 +218,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://kimi.moonshot.cn/',
     likes: 0,
     logoText: 'K',
+    logo: '/tools-logo/kimi.ico',
     tone: 'dark',
   },
   {
@@ -228,6 +238,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.doubao.com/',
     likes: 0,
     logoText: '豆',
+    logo: '/tools-logo/doubao.png',
     tone: 'pink',
   },
   {
@@ -247,6 +258,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://hailuoai.com/',
     likes: 1,
     logoText: '海',
+    logo: '/tools-logo/haimuo-ai.png',
     tone: 'green',
   },
   {
@@ -266,6 +278,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://chatgpt.com/',
     likes: 0,
     logoText: 'CG',
+    logo: '/tools-logo/chatgpt.webp',
     tone: 'green',
   },
   {
@@ -285,6 +298,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://xyq.jianying.com',
     likes: 0,
     logoText: '云',
+    logo: '/tools-logo/yunque-ai.png',
     tone: 'blue',
   },
   {
@@ -304,6 +318,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.aibiye.com/',
     likes: 0,
     logoText: 'Ai',
+    logo: '/tools-logo/aibiye.ico',
     tone: 'pink',
   },
   {
@@ -323,6 +338,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://inkfox-ai.com/',
     likes: 0,
     logoText: '墨',
+    logo: '/tools-logo/moyu-ai.svg',
     tone: 'violet',
   },
   {
@@ -342,6 +358,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://ibiling.cn/',
     likes: 0,
     logoText: '笔',
+    logo: '/tools-logo/biling-ai.ico',
     tone: 'green',
   },
   {
@@ -361,6 +378,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.liblib.art/',
     likes: 0,
     logoText: 'Li',
+    logo: '/tools-logo/liblibai.ico',
     tone: 'dark',
   },
   {
@@ -380,6 +398,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://wanxiang.aliyun.com/',
     likes: 0,
     logoText: '万',
+    logo: '/tools-logo/wanxiang.ico',
     tone: 'violet',
   },
   {
@@ -399,6 +418,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.faceswapper.ai/',
     likes: 0,
     logoText: 'FS',
+    logo: '/tools-logo/faceswapper.svg',
     tone: 'blue',
   },
   {
@@ -418,6 +438,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://stability.ai/',
     likes: 0,
     logoText: 'SD',
+    logo: '/tools-logo/stable-diffusion.webp',
     tone: 'pink',
   },
   // AI视频生成
@@ -438,6 +459,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://runwayml.com/',
     likes: 0,
     logoText: 'R',
+    logo: '/tools-logo/runway-ml.png',
     tone: 'violet',
   },
   {
@@ -457,6 +479,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://pika.art/',
     likes: 0,
     logoText: 'Pk',
+    logo: '/tools-logo/pika-labs.ico',
     tone: 'pink',
   },
   {
@@ -476,6 +499,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://openai.com/sora',
     likes: 0,
     logoText: 'So',
+    logo: '/tools-logo/sora.svg',
     tone: 'green',
   },
   {
@@ -495,6 +519,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://dream.lumalabs.ai/',
     likes: 0,
     logoText: 'LD',
+    logo: '/tools-logo/luma-dream.svg',
     tone: 'blue',
   },
   // AI音频工具
@@ -515,6 +540,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://ai.meta.com/tools/audiocraft/',
     likes: 0,
     logoText: 'AC',
+    logo: '/tools-logo/audiocraft.ico',
     tone: 'blue',
   },
   {
@@ -534,6 +560,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://elevenlabs.io/',
     likes: 0,
     logoText: 'E11',
+    logo: '/tools-logo/eleven-labs.png',
     tone: 'violet',
   },
   {
@@ -553,6 +580,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://murf.ai/',
     likes: 0,
     logoText: 'Mu',
+    logo: '/tools-logo/murf-ai.png',
     tone: 'dark',
   },
   {
@@ -572,6 +600,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://suno.ai/',
     likes: 0,
     logoText: 'Su',
+    logo: '/tools-logo/suno-ai.png',
     tone: 'pink',
   },
   // AI办公工具
@@ -592,6 +621,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.notion.so/ai',
     likes: 0,
     logoText: 'N',
+    logo: '/tools-logo/notion-ai.png',
     tone: 'dark',
   },
   {
@@ -611,6 +641,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.wps.cn/ai',
     likes: 0,
     logoText: 'WPS',
+    logo: '/tools-logo/wps-ai.ico',
     tone: 'blue',
   },
   {
@@ -630,6 +661,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.microsoft.com/microsoft-365/copilot',
     likes: 0,
     logoText: 'M365',
+    logo: '/tools-logo/copilot-office.ico',
     tone: 'violet',
   },
   {
@@ -649,6 +681,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.feishu.cn/ai',
     likes: 0,
     logoText: 'Fe',
+    logo: '/tools-logo/feishu-ai.ico',
     tone: 'green',
   },
   // AI搜索引擎
@@ -669,6 +702,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.perplexity.ai/',
     likes: 0,
     logoText: 'P',
+    logo: '/tools-logo/perplexity-ai.ico',
     tone: 'green',
   },
   {
@@ -688,6 +722,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.phind.com/',
     likes: 0,
     logoText: 'Ph',
+    logo: '/tools-logo/phind.svg',
     tone: 'blue',
   },
   {
@@ -707,6 +742,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://you.com/',
     likes: 0,
     logoText: 'Y',
+    logo: '/tools-logo/you-com.png',
     tone: 'violet',
   },
   {
@@ -726,6 +762,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://komo.ai/',
     likes: 0,
     logoText: 'Ko',
+    logo: '/tools-logo/komo-search.svg',
     tone: 'pink',
   },
   // AI开发平台
@@ -746,6 +783,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://huggingface.co/',
     likes: 0,
     logoText: 'HF',
+    logo: '/tools-logo/huggingface.ico',
     tone: 'pink',
   },
   {
@@ -765,6 +803,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://replicate.com/',
     likes: 0,
     logoText: 'Re',
+    logo: '/tools-logo/replicate.png',
     tone: 'violet',
   },
   {
@@ -784,6 +823,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.langchain.com/',
     likes: 0,
     logoText: 'LC',
+    logo: '/tools-logo/langchain.png',
     tone: 'green',
   },
   {
@@ -803,6 +843,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://cloud.google.com/vertex-ai',
     likes: 0,
     logoText: 'VA',
+    logo: '/tools-logo/vertex-ai.png',
     tone: 'blue',
   },
   // AI训练模型
@@ -823,6 +864,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://ai.meta.com/llama/',
     likes: 0,
     logoText: 'L3',
+    logo: '/tools-logo/llama-3.ico',
     tone: 'violet',
   },
   {
@@ -842,6 +884,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://openai.com/gpt-4',
     likes: 0,
     logoText: 'G4',
+    logo: '/tools-logo/gpt-4.svg',
     tone: 'green',
   },
   {
@@ -861,6 +904,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.anthropic.com/claude',
     likes: 0,
     logoText: 'Cl',
+    logo: '/tools-logo/claude-model.png',
     tone: 'blue',
   },
   {
@@ -880,6 +924,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://deepmind.google/gemini',
     likes: 0,
     logoText: 'Gm',
+    logo: '/tools-logo/gemini-model.ico',
     tone: 'pink',
   },
   // AI编程工具
@@ -900,6 +945,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://github.com/features/copilot',
     likes: 0,
     logoText: 'GC',
+    logo: '/tools-logo/github-copilot.svg',
     tone: 'blue',
   },
   {
@@ -919,6 +965,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://cursor.sh/',
     likes: 0,
     logoText: 'Cu',
+    logo: '/tools-logo/cursor.png',
     tone: 'violet',
   },
   {
@@ -938,6 +985,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.tabnine.com/',
     likes: 0,
     logoText: 'T9',
+    logo: '/tools-logo/tabnine.webp',
     tone: 'green',
   },
   {
@@ -957,6 +1005,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://aws.amazon.com/codewhisperer/',
     likes: 0,
     logoText: 'CW',
+    logo: '/tools-logo/codewhisperer.png',
     tone: 'dark',
   },
   // AI内容检测
@@ -977,6 +1026,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.turnitin.com/ai-writing-report',
     likes: 0,
     logoText: 'T',
+    logo: '/tools-logo/turnitin-ai.ico',
     tone: 'dark',
   },
   {
@@ -996,6 +1046,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://originality.ai/',
     likes: 0,
     logoText: 'Or',
+    logo: '/tools-logo/originality-ai.png',
     tone: 'green',
   },
   {
@@ -1015,6 +1066,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://gptzero.me/',
     likes: 0,
     logoText: 'GZ',
+    logo: '/tools-logo/gptzero.ico',
     tone: 'blue',
   },
   {
@@ -1034,6 +1086,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://copyleaks.com/',
     likes: 0,
     logoText: 'CL',
+    logo: '/tools-logo/copyleaks.webp',
     tone: 'violet',
   },
   // AI法律助手
@@ -1054,6 +1107,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://donotpay.com/',
     likes: 0,
     logoText: 'DNP',
+    logo: '/tools-logo/doNotPay.png',
     tone: 'green',
   },
   {
@@ -1073,6 +1127,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://casetext.com/',
     likes: 0,
     logoText: 'Cs',
+    logo: '/tools-logo/casetext.ico',
     tone: 'blue',
   },
   {
@@ -1092,6 +1147,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://law.ge/',
     likes: 0,
     logoText: 'LGE',
+    logo: '/tools-logo/law-ge.png',
     tone: 'dark',
   },
   {
@@ -1111,6 +1167,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://legalrobot.com/',
     likes: 0,
     logoText: 'LR',
+    logo: '/tools-logo/legalrobot.png',
     tone: 'pink',
   },
   // AI设计工具
@@ -1131,6 +1188,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.midjourney.com/',
     likes: 0,
     logoText: 'MJ',
+    logo: '/tools-logo/midjourney.png',
     tone: 'pink',
   },
   {
@@ -1150,6 +1208,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.adobe.com/firefly',
     likes: 0,
     logoText: 'FF',
+    logo: '/tools-logo/adobe-firefly.ico',
     tone: 'red',
   },
   {
@@ -1169,6 +1228,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://openai.com/dall-e-3',
     likes: 0,
     logoText: 'DL',
+    logo: '/tools-logo/dall-e.svg',
     tone: 'green',
   },
   {
@@ -1188,6 +1248,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://www.canva.com/',
     likes: 0,
     logoText: 'Ca',
+    logo: '/tools-logo/canva-ai.ico',
     tone: 'blue',
   },
   {
@@ -1207,6 +1268,7 @@ export const toolItems: ToolItem[] = [
     url: 'https://leonardo.ai/',
     likes: 0,
     logoText: 'Le',
+    logo: '/tools-logo/leonardo-ai.svg',
     tone: 'violet',
   },
 ];

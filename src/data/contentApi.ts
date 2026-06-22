@@ -1,4 +1,13 @@
 import {home as localHomeData, type HomeData, type HomeSection} from '@site/src/data/home';
+import {
+  getFeaturedTutorialListItem,
+  getTutorialListItems,
+} from '@site/src/data/adapters/tutorialAdapter';
+import {
+  getToolDetailItemById,
+  getToolCardMap,
+  getToolListSections as getLocalToolListSections,
+} from '@site/src/data/adapters/toolAdapter';
 import type {
   ContentListItem,
   NewsDetailItem,
@@ -30,6 +39,12 @@ export type ToolListResponse = {
 };
 
 const HOME_NEWS_IMAGE_POOL = Array.from({length: 10}, (_, index) => `/img/news${index + 1}.png`);
+
+const TUTORIAL_COVER_OVERRIDES: Record<string, string> = {
+  '/tutorials/codex01': '/codex-guide/images/codex002.png',
+  '/tutorials/codex02': '/codex-guide/images/codex003.png',
+  '/tutorials/claudecode': '/codex-guide/images/claudecode.png',
+};
 
 function getApiBaseUrl(): string {
   if (typeof window === 'undefined') {
@@ -64,14 +79,45 @@ function normalizeAssetUrl(value?: string): string | undefined {
   return value;
 }
 
+function getTutorialPathKey(value?: string): string | undefined {
+  if (!value) {
+    return undefined;
+  }
+
+  if (value.startsWith('/tutorials/article')) {
+    const query = value.split('?')[1];
+    const articlePath = query ? new URLSearchParams(query).get('path') : undefined;
+    return articlePath ?? value;
+  }
+
+  return value;
+}
+
+function getTutorialCoverOverride(item: Pick<ContentListItem, 'id' | 'path' | 'routePath'>) {
+  const pathKeys = [
+    getTutorialPathKey(item.path),
+    getTutorialPathKey(item.routePath),
+    item.id.startsWith('tutorial-') ? `/tutorials/${item.id.replace(/^tutorial-/, '')}` : undefined,
+    item.id.startsWith('/tutorials/') ? item.id : undefined,
+  ];
+
+  return pathKeys.reduce<string | undefined>(
+    (coverImage, pathKey) => coverImage ?? (pathKey ? TUTORIAL_COVER_OVERRIDES[pathKey] : undefined),
+    undefined,
+  );
+}
+
 function resolveHomeNewsCoverImage(index: number): string {
   return HOME_NEWS_IMAGE_POOL[index % HOME_NEWS_IMAGE_POOL.length];
 }
 
 function normalizeContentListItem(item: ContentListItem): ContentListItem {
+  const tutorialCoverOverride =
+    item.kind === 'tutorial' ? getTutorialCoverOverride(item) : undefined;
+
   return {
     ...item,
-    coverImage: normalizeAssetUrl(item.coverImage),
+    coverImage: normalizeAssetUrl(tutorialCoverOverride ?? item.coverImage),
   };
 }
 
@@ -82,11 +128,56 @@ function normalizeTutorialDetailItem(item: TutorialDetailItem | null): TutorialD
 
   return {
     ...item,
-    coverImage: normalizeAssetUrl(item.coverImage),
+    coverImage: normalizeAssetUrl(TUTORIAL_COVER_OVERRIDES[item.path] ?? item.coverImage),
+  };
+}
+
+const HOME_TOOL_ID_ALIASES: Record<string, string> = {
+  yiyan: 'ernie-bot',
+};
+
+function resolveHomeToolId(id: string): string {
+  const normalizedId = id.replace(/^home-tool-/, '');
+  return HOME_TOOL_ID_ALIASES[normalizedId] ?? normalizedId;
+}
+
+function normalizeToolListData(data: ToolListResponse): ToolListResponse {
+  const localToolCardMap = getToolCardMap();
+
+  return {
+    ...data,
+    sections: data.sections.map((section) => ({
+      ...section,
+      items: section.items.map((item) => {
+        const localTool = localToolCardMap.get(item.id);
+        return {
+          ...item,
+          logo: normalizeAssetUrl(item.logo ?? localTool?.logo),
+          logoText: item.logoText ?? localTool?.logoText,
+          tone: item.tone ?? localTool?.tone,
+        };
+      }),
+    })),
+  };
+}
+
+function normalizeToolDetailItem(item: ToolDetailItem | null): ToolDetailItem | null {
+  if (!item) {
+    return null;
+  }
+
+  const localTool = getToolDetailItemById(item.id);
+  return {
+    ...item,
+    logo: normalizeAssetUrl(item.logo ?? localTool?.logo),
+    logoText: item.logoText ?? localTool?.logoText,
+    tone: item.tone ?? localTool?.tone,
   };
 }
 
 function normalizeHomeSection(section: HomeSection, fallbackSection?: HomeSection): HomeSection {
+  const localToolCardMap = section.id === 'home-tools' ? getToolCardMap() : undefined;
+
   return {
     ...section,
     items: section.items.map((item, index) => ({
@@ -95,6 +186,20 @@ function normalizeHomeSection(section: HomeSection, fallbackSection?: HomeSectio
         section.id === 'home-news'
           ? resolveHomeNewsCoverImage(index)
           : normalizeAssetUrl(item.coverImage ?? fallbackSection?.items[index]?.coverImage),
+      logo:
+        section.id === 'home-tools'
+          ? normalizeAssetUrl(
+              item.logo ??
+                localToolCardMap?.get(resolveHomeToolId(item.id))?.logo ??
+                fallbackSection?.items[index]?.logo,
+            )
+          : normalizeAssetUrl(item.logo ?? fallbackSection?.items[index]?.logo),
+      logoText:
+        section.id === 'home-tools'
+          ? (item.logoText ??
+            localToolCardMap?.get(resolveHomeToolId(item.id))?.logoText ??
+            fallbackSection?.items[index]?.logoText)
+          : item.logoText,
     })),
   };
 }
@@ -137,11 +242,21 @@ export function getNewsDetailData(id: string): Promise<NewsDetailItem | null> {
 }
 
 export function getTutorialListData(): Promise<TutorialListResponse> {
-  return requestContent<TutorialListResponse>('/tutorials').then((data) => ({
-    ...data,
-    featuredItem: normalizeContentListItem(data.featuredItem),
-    items: data.items.map(normalizeContentListItem),
-  }));
+  return requestContent<TutorialListResponse>('/tutorials')
+    .then((data) => ({
+      ...data,
+      featuredItem: normalizeContentListItem(data.featuredItem),
+      items: data.items.map(normalizeContentListItem),
+    }))
+    .catch(() => {
+      const featuredItem = normalizeContentListItem(getFeaturedTutorialListItem());
+      const items = getTutorialListItems().map(normalizeContentListItem);
+      return {
+        featuredItem,
+        items,
+        total: items.length,
+      };
+    });
 }
 
 export function getTutorialDetailData(path: string): Promise<TutorialDetailItem | null> {
@@ -151,9 +266,19 @@ export function getTutorialDetailData(path: string): Promise<TutorialDetailItem 
 }
 
 export function getToolListData(): Promise<ToolListResponse> {
-  return requestContent<ToolListResponse>('/tools');
+  return requestContent<ToolListResponse>('/tools')
+    .then(normalizeToolListData)
+    .catch(() => {
+      const sections = getLocalToolListSections();
+      return {
+        sections,
+        total: sections.reduce((count, section) => count + section.items.length, 0),
+      };
+    });
 }
 
 export function getToolDetailData(id: string): Promise<ToolDetailItem | null> {
-  return requestContent<ToolDetailItem | null>(`/tools/${encodeURIComponent(id)}`);
+  return requestContent<ToolDetailItem | null>(`/tools/${encodeURIComponent(id)}`)
+    .then(normalizeToolDetailItem)
+    .catch(() => getToolDetailItemById(id) ?? null);
 }

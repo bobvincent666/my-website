@@ -27,6 +27,8 @@ function adaptToolListItem(item: ToolItem): ContentListItem {
     categories: [item.categoryName],
     path: buildToolDetailPath(item.id),
     tone: item.tone,
+    logoText: item.logoText,
+    logo: item.logo,
   };
 }
 
@@ -46,6 +48,7 @@ function adaptToolDetailItem(item: ToolItem): ToolDetailItem {
     website: item.url,
     likes: item.likes,
     logoText: item.logoText,
+    logo: item.logo,
     tone: item.tone,
   };
 }
@@ -65,6 +68,7 @@ export function getToolCardMap() {
         subtitle: item.subtitle,
         likes: item.likes,
         logoText: item.logoText,
+        logo: item.logo,
         tone: item.tone,
       },
     ]),

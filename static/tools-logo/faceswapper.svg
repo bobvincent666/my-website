@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Faceswapper logo">
+  <defs>
+    <linearGradient id="g" x1="18" y1="18" x2="110" y2="110" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00D4FF"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="#080B1A"/>
+  <circle cx="50" cy="52" r="25" fill="url(#g)" opacity=".95"/>
+  <circle cx="78" cy="76" r="25" fill="#FF4DA6" opacity=".9"/>
+  <path d="M43 72c8 12 34 12 42 0" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="48" cy="50" r="5" fill="#fff"/>
+  <circle cx="80" cy="50" r="5" fill="#fff"/>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Leonardo AI logo">
+  <defs>
+    <linearGradient id="g" x1="20" y1="16" x2="108" y2="112" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#37E8FF"/>
+      <stop offset=".48" stop-color="#5B7CFF"/>
+      <stop offset="1" stop-color="#C084FC"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#090D1F"/>
+  <path d="M38 28h20v55h34v17H38z" fill="url(#g)"/>
+  <path d="M74 28h17v38H74z" fill="#fff" opacity=".9"/>
+</svg>

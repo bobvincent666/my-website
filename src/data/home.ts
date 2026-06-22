@@ -37,6 +37,7 @@ export type HomeListItem = {
   coverImage?: string;
   tone?: HomeTone;
   logoText?: string;
+  logo?: string;
 };
 
 export type HomeSection = {

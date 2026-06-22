@@ -8,6 +8,37 @@ function toneClassName(tone: string) {
   return styles[`tone${tone.charAt(0).toUpperCase()}${tone.slice(1)}`];
 }
 
+function ToolLogo({
+  logo,
+  logoText,
+  title,
+  tone,
+}: {
+  logo?: string;
+  logoText?: string;
+  title: string;
+  tone?: string;
+}): ReactNode {
+  const [imageFailed, setImageFailed] = useState(false);
+  const fallbackText = logoText ?? title.slice(0, 2);
+
+  return (
+    <div className={`${styles.logo} ${toneClassName(tone ?? 'blue')}`}>
+      {logo && !imageFailed ? (
+        <img
+          className={styles.logoImage}
+          src={logo}
+          alt={`${title} logo`}
+          loading="lazy"
+          onError={() => setImageFailed(true)}
+        />
+      ) : (
+        fallbackText
+      )}
+    </div>
+  );
+}
+
 export default function ToolsDirectoryPage({
   sections,
   total,
@@ -87,10 +118,12 @@ export default function ToolsDirectoryPage({
                     {category.items.map((tool) => (
                       <Link key={tool.id} className={styles.card} to={tool.path}>
                         <div className={styles.cardHeader}>
-                          <div
-                            className={`${styles.logo} ${toneClassName(tool.tone ?? 'blue')}`}>
-                            {tool.logoText ?? tool.title.slice(0, 2)}
-                          </div>
+                          <ToolLogo
+                            logo={tool.logo}
+                            logoText={tool.logoText}
+                            title={tool.title}
+                            tone={tool.tone}
+                          />
                           <div className={styles.cardCopy}>
                             <strong className={styles.cardTitle}>{tool.title}</strong>
                             <p className={styles.cardSubtitle}>{tool.summary}</p>
