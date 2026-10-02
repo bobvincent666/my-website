@@ -6,6 +6,8 @@
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",
+    "check:tutorials": "node scripts/check-tutorials.mjs",
+    "check:release": "node scripts/check-tutorials.mjs --site",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",

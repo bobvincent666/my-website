@@ -2,6 +2,9 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+// Rspack's Windows persistent cache has repeatedly failed during local builds.
+process.env.DOCUSAURUS_NO_PERSISTENT_CACHE = 'true';
+
 const config: Config = {
   title: '首页',
   tagline: '聚合全网 AI 快讯、技术教程与实用工具集',
