@@ -5,8 +5,6 @@ import Heading from '@theme/Heading';
 import RemoteContentState from '@site/src/components/RemoteContentState';
 import {getTutorialListData} from '@site/src/data/contentApi';
 import {
-  CODEX_GUIDE_HERO_IMAGE,
-  codexGuideTopic,
   isCodexGuideItem,
 } from '@site/src/data/codexGuideTopic';
 import {useRemoteData} from '@site/src/hooks/useRemoteData';
@@ -30,23 +28,24 @@ export default function TutorialsPage(): ReactNode {
 
             <Link
               className={`${styles.featured} ${styles.codexFeatured}`}
-              to={codexGuideTopic.route}
+              to="/tutorials/ms-cookbook"
               style={{
-                backgroundImage: `linear-gradient(180deg, rgba(8, 12, 24, 0.12), rgba(8, 12, 24, 0.58)), url('${CODEX_GUIDE_HERO_IMAGE}')`,
+                backgroundImage: "linear-gradient(90deg, rgba(24, 16, 55, 0.9), rgba(24, 16, 55, 0.25)), url('/ms-cookbook/assets/reading-dada-illustrations/05-peeking-lavender.png')",
+                backgroundColor: '#a28dd9',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
               }}>
               <div className={styles.featuredInner}>
                 <div className={styles.featuredDate}>
-                  <span>{codexGuideTopic.eyebrow}</span>
+                  <span>ModelScope Cookbook</span>
                   <strong>专题课程</strong>
                 </div>
                 <div className={styles.featuredText}>
                   <Heading as="h1" className={styles.featuredTitle}>
-                    {codexGuideTopic.title}
+                    魔搭紫皮书 · 开源模型应用实战
                   </Heading>
-                  <p className={styles.featuredDesc}>{codexGuideTopic.subtitle}</p>
+                  <p className={styles.featuredDesc}>从模型选型、推理、微调与评测，到 RAG、Agent 与 AIGC，循着阅读路径把开源模型用起来。</p>
                 </div>
               </div>
             </Link>

@@ -14,6 +14,17 @@
   },
   "tutorialItems": [
     {
+      "id": "codex-guide",
+      "path": "/tutorials/codex-guide",
+      "link": "/tutorials/codex-guide",
+      "title": "Codex 从入门到精通高级课程",
+      "description": "从第一次上手，到把 Codex 接入个人和团队协作的完整实战指南。",
+      "categories": ["技术教程"],
+      "date": "专题课程",
+      "image": "/codex-guide/images/codex001.png",
+      "tone": "violet"
+    },
+    {
       "id": "codex01",
       "path": "/tutorials/codex01",
       "link": "/tutorials/article?path=%2Ftutorials%2Fcodex01",
